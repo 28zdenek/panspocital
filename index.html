@@ -61,6 +61,13 @@ section{padding:48px 0}
 .gh{font-size:24px;letter-spacing:-.02em;margin:8px 0 14px}
 @media (max-width:900px){.g3d{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:560px){.g3d{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:40px;align-items:center}
+.intro h1{max-width:12ch}
+.intro-video{position:relative;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(18,53,91,.45);background:#dfe9f1;aspect-ratio:16/9}
+.intro-video video{display:block;width:100%;height:100%;object-fit:cover}
+#zvuk{position:absolute;left:16px;bottom:16px;border:0;border-radius:999px;padding:10px 16px;font:600 15px 'Bricolage Grotesque',system-ui,sans-serif;background:rgba(255,255,255,.92);color:#12355B;cursor:pointer;box-shadow:0 6px 18px -6px rgba(0,0,0,.35)}
+#zvuk:hover{background:#fff}
+@media (max-width:900px){.intro{grid-template-columns:1fr;gap:24px}}
 footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:15px}
 @media (max-width:900px){.alt .grid,.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.wrap{padding:0 16px}.alt .grid,.grid{grid-template-columns:1fr}.dark{grid-template-columns:1fr;padding:28px}.dark svg{width:96px;height:96px}}
@@ -84,12 +91,17 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 </header>
 
 <main>
-  <div class="wrap hero">
-    <span class="tag">Pracovní ukázka</span>
-    <h1>Kdo bude náš <span>maskot?</span></h1>
-    <p class="lead">Návrhy maskota pro novou finanční značku. Všechno spočítá, vysvětlí po lidsku a řekne, co se vyplatí.</p>
+  <div class="wrap hero intro">
+    <div class="intro-text">
+      <span class="tag">Pracovní ukázka</span>
+      <h1>Hypotéku ti <span>spočítáme</span> i vyřídíme.</h1>
+      <p class="lead">Od prvního propočtu až po klíče od nového domova. Po lidsku, přehledně a bez stresu.</p>
+    </div>
+    <div class="intro-video">
+      <video id="intro" src="video/intro.mp4" poster="video/intro-poster.jpg" autoplay muted playsinline preload="auto" aria-label="Animace: poradce pomáhá mladému páru podepsat hypotéku a předává jim klíče od domu"></video>
+      <button id="zvuk" type="button" aria-label="Přehrát video se zvukem">🔊 Pustit se zvukem</button>
+    </div>
   </div>
-
 
   <section class="wrap" id="maskoti-3d">
     <span class="tag tag-blue">Kolo 3 · 3D postavy</span>
@@ -146,5 +158,10 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 </main>
 
 <footer class="wrap">© 2026 panspocital.cz · pracovní verze</footer>
+<script>
+(function(){var v=document.getElementById('intro'),b=document.getElementById('zvuk');if(!v||!b)return;
+b.addEventListener('click',function(){v.muted=false;v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){});b.hidden=true;});
+v.addEventListener('ended',function(){b.hidden=false;b.textContent='↻ Přehrát znovu se zvukem';});})();
+</script>
 </body>
 </html>
