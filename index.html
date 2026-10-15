@@ -43,6 +43,20 @@ section{padding:48px 0}
 .dark svg{width:140px;height:140px}
 .dark h2{color:var(--bg)}
 .dark p{color:#B9D6C6;margin:0;font-size:18px;max-width:60ch}
+.tag-blue{background:#CFE9FB;color:#12355B}
+.styles,.row{display:grid;grid-template-columns:200px repeat(5,minmax(0,1fr));gap:14px}
+.styles{font-weight:700;font-size:15px;margin:8px 0 10px}
+.row{margin-bottom:18px;align-items:start}
+.cells{display:contents}
+.rl small{font-weight:600;color:var(--muted);letter-spacing:.06em}
+.rl h3{margin:2px 0 4px;font-size:24px;letter-spacing:-.02em}
+.rl p{margin:0;color:var(--muted);font-size:15px}
+.m{margin:0;background:#fff;border:1px solid #D9E6F2;border-radius:18px;overflow:hidden}
+.m img{display:block;width:100%;height:auto;aspect-ratio:1/1}
+.m figcaption{display:flex;align-items:center;gap:8px;padding:8px 10px;font-size:13px;color:var(--muted)}
+.m figcaption b{background:#12355B;color:#fff;border-radius:8px;min-width:28px;height:28px;display:grid;place-items:center;font-size:15px}
+@media (max-width:900px){.styles{display:none}.row{grid-template-columns:repeat(3,minmax(0,1fr))}.rl{grid-column:1/-1}}
+@media (max-width:560px){.row{grid-template-columns:repeat(2,minmax(0,1fr))}}
 footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:15px}
 @media (max-width:900px){.alt .grid,.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.wrap{padding:0 16px}.alt .grid,.grid{grid-template-columns:1fr}.dark{grid-template-columns:1fr;padding:28px}.dark svg{width:96px;height:96px}}
@@ -68,12 +82,25 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 <main>
   <div class="wrap hero">
     <span class="tag">Pracovní ukázka</span>
-    <h1>Kdo bude <span>Pan Spočítal?</span></h1>
+    <h1>Kdo bude náš <span>maskot?</span></h1>
     <p class="lead">Návrhy maskota pro novou finanční značku. Všechno spočítá, vysvětlí po lidsku a řekne, co se vyplatí.</p>
   </div>
 
+
+  <section class="wrap" id="modri">
+    <span class="tag tag-blue">Kolo 2 · světle modrá</span>
+    <h2 style="margin-top:14px">25 návrhů: 5 postaviček × 5 stylů</h2>
+    <p class="sub">Každý má své písmeno. Vyber TOP 5 a pro ně uděláme pozice: vítá, děkuje a ozveme se, je smutný, že odcházíš…</p>
+    <div class="styles"><span></span><span>3D animovaný</span><span>Plochý vektor</span><span>Plastelína</span><span>Ručně kreslený akvarel</span><span>Nálepka s konturou</span></div>
+    <div class="row"><div class="rl"><small>A–E</small><h3>Pan Spočítal</h3><p>Lidský rádce v buřince se „=“ a kalkulačkou.</p></div><div class="cells"><figure class="m"><img src="img/modri/A.jpg" alt="Pan Spočítal, styl 3D animovaný" width="600" height="600" loading="lazy"><figcaption><b>A</b><span>3D animovaný</span></figcaption></figure><figure class="m"><img src="img/modri/B.jpg" alt="Pan Spočítal, styl Plochý vektor" width="600" height="600" loading="lazy"><figcaption><b>B</b><span>Plochý vektor</span></figcaption></figure><figure class="m"><img src="img/modri/C.jpg" alt="Pan Spočítal, styl Plastelína" width="600" height="600" loading="lazy"><figcaption><b>C</b><span>Plastelína</span></figcaption></figure><figure class="m"><img src="img/modri/D.jpg" alt="Pan Spočítal, styl Ručně kreslený akvarel" width="600" height="600" loading="lazy"><figcaption><b>D</b><span>Ručně kreslený akvarel</span></figcaption></figure><figure class="m"><img src="img/modri/E.jpg" alt="Pan Spočítal, styl Nálepka s konturou" width="600" height="600" loading="lazy"><figcaption><b>E</b><span>Nálepka s konturou</span></figcaption></figure></div></div>
+    <div class="row"><div class="rl"><small>F–J</small><h3>Bobr stavitel</h3><p>Staví domov a šetří, přímý odkaz na bydlení.</p></div><div class="cells"><figure class="m"><img src="img/modri/F.jpg" alt="Bobr stavitel, styl 3D animovaný" width="600" height="600" loading="lazy"><figcaption><b>F</b><span>3D animovaný</span></figcaption></figure><figure class="m"><img src="img/modri/G.jpg" alt="Bobr stavitel, styl Plochý vektor" width="600" height="600" loading="lazy"><figcaption><b>G</b><span>Plochý vektor</span></figcaption></figure><figure class="m"><img src="img/modri/H.jpg" alt="Bobr stavitel, styl Plastelína" width="600" height="600" loading="lazy"><figcaption><b>H</b><span>Plastelína</span></figcaption></figure><figure class="m"><img src="img/modri/I.jpg" alt="Bobr stavitel, styl Ručně kreslený akvarel" width="600" height="600" loading="lazy"><figcaption><b>I</b><span>Ručně kreslený akvarel</span></figcaption></figure><figure class="m"><img src="img/modri/J.jpg" alt="Bobr stavitel, styl Nálepka s konturou" width="600" height="600" loading="lazy"><figcaption><b>J</b><span>Nálepka s konturou</span></figcaption></figure></div></div>
+    <div class="row"><div class="rl"><small>K–O</small><h3>Domeček</h3><p>Živý domek s klíčem, okamžitě říká „bydlení“.</p></div><div class="cells"><figure class="m"><img src="img/modri/K.jpg" alt="Domeček, styl 3D animovaný" width="600" height="600" loading="lazy"><figcaption><b>K</b><span>3D animovaný</span></figcaption></figure><figure class="m"><img src="img/modri/L.jpg" alt="Domeček, styl Plochý vektor" width="600" height="600" loading="lazy"><figcaption><b>L</b><span>Plochý vektor</span></figcaption></figure><figure class="m"><img src="img/modri/M.jpg" alt="Domeček, styl Plastelína" width="600" height="600" loading="lazy"><figcaption><b>M</b><span>Plastelína</span></figcaption></figure><figure class="m"><img src="img/modri/N.jpg" alt="Domeček, styl Ručně kreslený akvarel" width="600" height="600" loading="lazy"><figcaption><b>N</b><span>Ručně kreslený akvarel</span></figcaption></figure><figure class="m"><img src="img/modri/O.jpg" alt="Domeček, styl Nálepka s konturou" width="600" height="600" loading="lazy"><figcaption><b>O</b><span>Nálepka s konturou</span></figcaption></figure></div></div>
+    <div class="row"><div class="rl"><small>P–T</small><h3>Prasátko</h3><p>Pokladnička, spoření. Srozumitelné, ale okoukané.</p></div><div class="cells"><figure class="m"><img src="img/modri/P.jpg" alt="Prasátko, styl 3D animovaný" width="600" height="600" loading="lazy"><figcaption><b>P</b><span>3D animovaný</span></figcaption></figure><figure class="m"><img src="img/modri/Q.jpg" alt="Prasátko, styl Plochý vektor" width="600" height="600" loading="lazy"><figcaption><b>Q</b><span>Plochý vektor</span></figcaption></figure><figure class="m"><img src="img/modri/R.jpg" alt="Prasátko, styl Plastelína" width="600" height="600" loading="lazy"><figcaption><b>R</b><span>Plastelína</span></figcaption></figure><figure class="m"><img src="img/modri/S.jpg" alt="Prasátko, styl Ručně kreslený akvarel" width="600" height="600" loading="lazy"><figcaption><b>S</b><span>Ručně kreslený akvarel</span></figcaption></figure><figure class="m"><img src="img/modri/T.jpg" alt="Prasátko, styl Nálepka s konturou" width="600" height="600" loading="lazy"><figcaption><b>T</b><span>Nálepka s konturou</span></figcaption></figure></div></div>
+    <div class="row"><div class="rl"><small>U–Y</small><h3>Robůtek</h3><p>Fintech asistent s grafem, rychlost a technologie.</p></div><div class="cells"><figure class="m"><img src="img/modri/U.jpg" alt="Robůtek, styl 3D animovaný" width="600" height="600" loading="lazy"><figcaption><b>U</b><span>3D animovaný</span></figcaption></figure><figure class="m"><img src="img/modri/V.jpg" alt="Robůtek, styl Plochý vektor" width="600" height="600" loading="lazy"><figcaption><b>V</b><span>Plochý vektor</span></figcaption></figure><figure class="m"><img src="img/modri/W.jpg" alt="Robůtek, styl Plastelína" width="600" height="600" loading="lazy"><figcaption><b>W</b><span>Plastelína</span></figcaption></figure><figure class="m"><img src="img/modri/X.jpg" alt="Robůtek, styl Ručně kreslený akvarel" width="600" height="600" loading="lazy"><figcaption><b>X</b><span>Ručně kreslený akvarel</span></figcaption></figure><figure class="m"><img src="img/modri/Y.jpg" alt="Robůtek, styl Nálepka s konturou" width="600" height="600" loading="lazy"><figcaption><b>Y</b><span>Nálepka s konturou</span></figcaption></figure></div></div>
+  </section>
+
   <section class="wrap" id="pan-spocital">
-    <h2>Pan Spočítal</h2>
+    <h2>Kolo 1: zelený Pan Spočítal</h2>
     <p class="sub">Šest směrů, všechny v klobouku se znaménkem „=“.</p>
     <div class="grid">
       <article class="card"><img src="img/panspocital-1.jpg" alt="Zelený kulatý pán v buřince s brýlemi a motýlkem drží kalkulačku" width="900" height="900"><div class="info"><span class="num">Návrh 1</span><h3>Pan Spočítal klasik</h3><p>Kulaťoučký pán v buřince, brýle, motýlek a kalkulačka v ruce.</p></div></article>
