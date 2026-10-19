@@ -23,19 +23,20 @@
 <meta name="twitter:description" content="Od prvního propočtu až po klíče od nového domova.">
 <meta name="twitter:image" content="https://panspocital.cz/og.jpg">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='32' fill='%230E3B2E'/%3E%3Ccircle cx='60' cy='70' r='31' fill='%2322B866'/%3E%3Crect x='46' y='20' width='28' height='21' rx='6' fill='%23F3F6EF'/%3E%3Crect x='37' y='37' width='46' height='7.5' rx='3.75' fill='%23F3F6EF'/%3E%3Ccircle cx='50' cy='66' r='6' fill='%23fff'/%3E%3Ccircle cx='70' cy='66' r='6' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--forest:#0E3B2E;--green:#14964F;--mid:#22B866;--fresh:#5BE38F;--lime:#C8F169;--bg:#F3F6EF;--card:#FFFFFF;--muted:#3F5A4E;--line:#DDE6DA}
+:root{--forest:#12355B;--green:#1F7EC2;--mid:#4FB3E8;--fresh:#8FD0F2;--lime:#CFE9FB;--bg:#F4F8FB;--card:#FFFFFF;--muted:#3D5670;--line:#DCE7F0}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--forest);font-family:'Bricolage Grotesque',system-ui,sans-serif;line-height:1.5}
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 header{padding:28px 0}
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit}
-.brand svg{width:56px;height:56px;flex:none}
+.brand .logo{border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff,0 6px 16px -6px rgba(18,53,91,.45);width:56px;height:56px;flex:none}
 .brand .t{display:flex;flex-direction:column;line-height:.95}
 .brand .t small{font-size:17px;font-weight:600;color:var(--green)}
 .brand .t b{font-size:34px;font-weight:800;letter-spacing:-.04em}
@@ -49,8 +50,8 @@ h2{font-size:clamp(26px,3.6vw,38px);font-weight:800;letter-spacing:-.03em;margin
 section{padding:48px 0}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease}
-.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -20px rgba(14,59,46,.35)}
-.card img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;background:#f5f2ea}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -20px rgba(18,53,91,.35)}
+.card img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;background:#eef3f7}
 .card .info{padding:16px 20px 20px}
 .card .num{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
 .card h3{margin:2px 0 4px;font-size:22px;letter-spacing:-.02em}
@@ -99,16 +100,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 <body>
 <header class="wrap">
   <a class="brand" href="/" aria-label="Pan Spočítal">
-    <svg viewBox="0 0 120 120" aria-hidden="true">
-      <circle cx="60" cy="72" r="40" fill="#22B866"/>
-      <rect x="42" y="10" width="36" height="26" rx="7" fill="#0E3B2E"/>
-      <rect x="30" y="31" width="60" height="9" rx="4.5" fill="#0E3B2E"/>
-      <rect x="52" y="17" width="16" height="3.6" rx="1.8" fill="#C8F169"/>
-      <rect x="52" y="24" width="16" height="3.6" rx="1.8" fill="#C8F169"/>
-      <circle cx="47" cy="66" r="7.5" fill="#fff"/><circle cx="73" cy="66" r="7.5" fill="#fff"/>
-      <circle cx="48.5" cy="67" r="3.4" fill="#0E3B2E"/><circle cx="74.5" cy="67" r="3.4" fill="#0E3B2E"/>
-      <path d="M47 84 Q60 96 73 84" fill="none" stroke="#0E3B2E" stroke-width="4.5" stroke-linecap="round"/>
-    </svg>
+    <img class="logo" src="img/logo.jpg" alt="" width="240" height="240">
     <span class="t"><small>Pan</small><b>Spočítal</b></span>
   </a>
 </header>
@@ -143,7 +135,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
   </section>
 </main>
 
-<footer class="wrap">© 2026 panspocital.cz · pracovní verze</footer>
+<footer class="wrap">© 2026 panspocital.cz · pracovní verze · <a href="/navod/" style="color:var(--green);font-weight:600">Jak to vzniklo? Návod →</a></footer>
 <script>
 (function(){var v=document.getElementById('intro'),b=document.getElementById('zvuk');if(!v||!b)return;
 b.addEventListener('click',function(){v.muted=false;v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){});b.hidden=true;});

@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jak vznikl Pan Spočítal – návod</title>
+<meta name="description" content="Kompletní návod, jak jsme s AI udělali značku, 3D maskota, rodinu postav, namluvené video a web Pan Spočítal. Nástroje, postup, prompty a ceny.">
+<link rel="canonical" href="https://panspocital.cz/navod/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Pan Spočítal">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:url" content="https://panspocital.cz/navod/">
+<meta property="og:title" content="Jak vznikl Pan Spočítal – návod krok za krokem">
+<meta property="og:description" content="Značka, 3D maskot, rodina postav, namluvené video a web. Co jsme použili a jak to zopakovat.">
+<meta property="og:image" content="https://panspocital.cz/img/rodina/rodina.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#12355B;--green:#1F7EC2;--mid:#4FB3E8;--fresh:#8FD0F2;--lime:#CFE9FB;--bg:#F4F8FB;--card:#FFFFFF;--muted:#3D5670;--line:#DCE7F0;--sky:#E3F1FB;--navy:#12355B}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--forest);font-family:'Bricolage Grotesque',system-ui,sans-serif;line-height:1.6;font-size:18px}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+header{padding:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.brand .logo{border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff,0 6px 16px -6px rgba(18,53,91,.45);width:48px;height:48px;flex:none}
+.brand .t{display:flex;flex-direction:column;line-height:.95}
+.brand .t small{font-size:15px;font-weight:600;color:var(--green)}
+.brand .t b{font-size:28px;font-weight:800;letter-spacing:-.04em}
+.back{font-weight:600;color:var(--green);text-decoration:none}
+.back:hover{text-decoration:underline}
+.tag{display:inline-block;background:var(--lime);color:var(--forest);font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+h1{font-size:clamp(36px,6.4vw,66px);font-weight:800;letter-spacing:-.045em;line-height:1.02;margin:18px 0 18px}
+h1 span{color:var(--green)}
+.lead{font-size:clamp(18px,2.2vw,22px);color:var(--muted);max-width:60ch;margin:0}
+h2{font-size:clamp(26px,3.6vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin:0 0 12px}
+h3{font-size:22px;letter-spacing:-.02em;margin:28px 0 8px;line-height:1.2}
+p{margin:0 0 14px}
+a{color:var(--green)}
+section{padding:44px 0;border-top:1px solid var(--line)}
+.hero{padding:24px 0 44px}
+.hero img{display:block;width:100%;height:auto;border-radius:28px;margin-top:32px;box-shadow:0 30px 60px -30px rgba(18,53,91,.45)}
+.step{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:14px;background:var(--forest);color:var(--lime);font-weight:800;font-size:20px;margin-bottom:12px}
+.toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px;padding:0;margin:20px 0 0;list-style:none;counter-reset:t}
+.toc li{counter-increment:t}
+.toc a{display:flex;gap:10px;text-decoration:none;color:var(--forest);font-weight:600;padding:8px 0;border-bottom:1px dashed var(--line)}
+.toc a::before{content:counter(t,decimal-leading-zero);color:var(--green)}
+.toc a:hover{color:var(--green)}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:20px}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 20px}
+.tool b{display:block;font-size:20px;letter-spacing:-.02em}
+.tool small{display:inline-block;font-weight:600;color:var(--green);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.tool p{margin:0;color:var(--muted);font-size:16px}
+.note{background:var(--sky);color:var(--navy);border-radius:20px;padding:16px 20px;margin:18px 0;font-size:17px}
+.note.warn{background:#FFF4D6;color:#5B4300}
+.note b{display:block;margin-bottom:2px}
+ul.list{padding-left:22px;margin:0 0 14px}
+ul.list li{margin-bottom:6px}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:18px 0}
+figure{margin:0}
+.duo img,.pic{display:block;width:100%;height:auto;border-radius:20px;border:1px solid var(--line)}
+figcaption{font-size:15px;color:var(--muted);margin-top:6px}
+pre{background:var(--forest);color:#E3F1FB;border-radius:18px;padding:18px 20px;overflow-x:auto;font:15px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;word-break:break-word;margin:10px 0 18px}
+code{font:0.9em ui-monospace,SFMono-Regular,Menlo,monospace;background:#E2EDF6;padding:2px 6px;border-radius:6px}
+pre code{background:none;padding:0;font:inherit}
+.swatches{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin:16px 0}
+.sw{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;font-size:13px}
+.sw i{display:block;height:64px}
+.sw span{display:block;padding:6px 8px;line-height:1.3}
+.tbl{width:100%;border-collapse:collapse;background:#fff;border-radius:18px;overflow:hidden;border:1px solid var(--line);font-size:16px;margin:10px 0 18px}
+.tbl th,.tbl td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{background:#E6F0F8;font-weight:600}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td:last-child{white-space:nowrap}
+.scroll{overflow-x:auto}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:15px}
+@media (max-width:700px){body{font-size:17px}.toc,.tools,.duo{grid-template-columns:1fr}.swatches{grid-template-columns:repeat(3,minmax(0,1fr))}.wrap{padding:0 16px}.tbl td:last-child{white-space:normal}}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <a class="brand" href="/" aria-label="Pan Spočítal – hlavní stránka">
+    <img class="logo" src="../img/logo.jpg" alt="" width="240" height="240">
+    <span class="t"><small>Pan</small><b>Spočítal</b></span>
+  </a>
+  <a class="back" href="/">← Zpět na web</a>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <span class="tag">Návod · jak to vzniklo</span>
+    <h1>Jak jsme za pár dní udělali <span>celou značku</span> s AI</h1>
+    <p class="lead">Název, logo, 3D maskot, celá rodina postav, namluvené video, web s vlastní doménou a hezký náhled při sdílení. Tady je přesně, co jsme použili, v jakém pořadí a na co si dát pozor, abys to zvládl taky.</p>
+    <img src="../img/rodina/rodina.jpg" alt="Rodina Spočítalových před domem" width="1600" height="900">
+  </div>
+
+  <section id="obsah" style="border-top:0;padding-top:0">
+    <h2>Obsah</h2>
+    <ol class="toc">
+      <li><a href="#nastroje">Nástroje, které jsme použili</a></li>
+      <li><a href="#nazev">Název a doména</a></li>
+      <li><a href="#znacka">Logo, barvy a písmo</a></li>
+      <li><a href="#maskot">Maskot: tři kola hledání</a></li>
+      <li><a href="#rodina">Rodina postav, které k sobě sedí</a></li>
+      <li><a href="#video">Namluvené úvodní video</a></li>
+      <li><a href="#web">Web v jednom souboru</a></li>
+      <li><a href="#hosting">Hosting zdarma a vlastní doména</a></li>
+      <li><a href="#sdileni">Náhled při sdílení odkazu</a></li>
+      <li><a href="#prompty">Prompty ke zkopírování</a></li>
+      <li><a href="#cena">Kolik to stálo</a></li>
+      <li><a href="#tipy">10 pravidel na závěr</a></li>
+    </ol>
+  </section>
+
+  <section id="nastroje">
+    <span class="step">01</span>
+    <h2>Nástroje, které jsme použili</h2>
+    <p>Všechno řídil jeden AI asistent v terminálu. Ten psal kód, posílal zadání do generátorů obrázků a videa, nahrával soubory na GitHub a kontroloval výsledek. My jsme jen říkali, co se líbí a co ne.</p>
+    <div class="tools">
+      <div class="tool"><small>Mozek a ruce</small><b>Claude Code</b><p>AI asistent v terminálu. Vymýšlel názvy, psal web, generoval obrázky přes MagniFic, stříhal video, nastavoval GitHub a DNS. Všechno se zadává normální češtinou.</p></div>
+      <div class="tool"><small>Obrázky a video</small><b>MagniFic</b><p>Jedna platforma na všechno vizuální: generování obrázků (s referencí pro stejnou postavu), video Kling 2.5, rozmluvení postavy OmniHuman a hlas ElevenLabs v3. Platí se kredity.</p></div>
+      <div class="tool"><small>Hlas</small><b>ElevenLabs v3 (v MagniFicu)</b><p>Namluvení textu. Umí emoce v hranatých závorkách, třeba <code>[cheerful]</code> nebo <code>[excited]</code>. Použili jsme hlas Tomáš Šimko.</p></div>
+      <div class="tool"><small>Návrhy</small><b>Figma</b><p>Nástěnka se všemi maskoty a zásadami, aby se dalo s týmem vybírat a komentovat. Starší kola jsou v archivu.</p></div>
+      <div class="tool"><small>Hosting zdarma</small><b>GitHub + GitHub Pages</b><p>Kód webu je v repozitáři a GitHub ho zdarma zveřejní včetně HTTPS certifikátu. Nová verze je venku zhruba do minuty.</p></div>
+      <div class="tool"><small>Doména</small><b>Wedos</b><p>Registrace panspocital.cz a DNS záznamy, které doménu nasměrují na GitHub.</p></div>
+      <div class="tool"><small>Střih videa</small><b>ffmpeg</b><p>Program na spojení záběrů, kompresi videa pro web a vytažení náhledového snímku. Ovládá ho asistent, ty nemusíš nic.</p></div>
+      <div class="tool"><small>Kontrola</small><b>Chrome (bez okna)</b><p>Asistent si web vyfotí v počítačové i mobilní šířce, podívá se na výsledek a opraví, co nesedí.</p></div>
+    </div>
+  </section>
+
+  <section id="nazev">
+    <span class="step">02</span>
+    <h2>Název a doména</h2>
+    <p>Začali jsme stovkami návrhů, ale nejvíc pomohlo zastavit se a <b>nejdřív si ujasnit zadání</b>. Asistent nastudoval, jak se značky pojmenovávají, a položil pár otázek:</p>
+    <ul class="list">
+      <li><b>Tón:</b> přátelský, chytrý, s trochou humoru.</li>
+      <li><b>Slib:</b> jasno a férovost, rychlost a pohodlí, jistota a klid, úspora peněz.</li>
+      <li><b>Trh:</b> jen Česko, takže jméno může být česky a s vtipem.</li>
+    </ul>
+    <p>Každý favorit pak prošel kontrolou: je doména <code>.cz</code> volná? Neexistuje už firma se stejným nebo podobným jménem? (Tak vypadl třeba „Finvo“, protože ve světě už je.) Vyhrálo <b>Pan Spočítal</b>. Je to česky, zapamatovatelné, vtipné a rovnou se z toho dá udělat postava.</p>
+    <div class="note"><b>Tip</b>Když se ti líbí název, nech si ověřit doménu, existující firmy a ochranné známky (ÚPV, EUIPO) dřív, než do něj investuješ čas.</div>
+  </section>
+
+  <section id="znacka">
+    <span class="step">03</span>
+    <h2>Logo, barvy a písmo</h2>
+    <p>Logo je přímo náš maskot: <b>Pan Spočítal tváří v tvář se svým labradorem</b> v kulatém výřezu, vedle něj nápis „Pan Spočítal“. Na logo jsme si nechali vygenerovat samostatný detail hlav na čistém světle modrém pozadí, protože celá postava je v malé velikosti nečitelná. Stejný obrázek slouží i jako ikona v záložce prohlížeče a na ploše telefonu.</p>
+    <p>Původně bylo logo zelená kulatá postavička. Jakmile jsme ale měli maskota, logo jsme sjednotili s ním a celou paletu převedli ze zelené do <b>modré podle jeho vesty</b>.</p>
+    <div class="swatches">
+      <div class="sw"><i style="background:#12355B"></i><span>Noční<br>#12355B</span></div>
+      <div class="sw"><i style="background:#1F7EC2"></i><span>Modrá<br>#1F7EC2</span></div>
+      <div class="sw"><i style="background:#4FB3E8"></i><span>Nebe<br>#4FB3E8</span></div>
+      <div class="sw"><i style="background:#8FD0F2"></i><span>Vesta<br>#8FD0F2</span></div>
+      <div class="sw"><i style="background:#CFE9FB"></i><span>Světlá<br>#CFE9FB</span></div>
+      <div class="sw"><i style="background:#F4F8FB"></i><span>Pozadí<br>#F4F8FB</span></div>
+    </div>
+    <div class="note"><b>Čitelnost</b>Úplně světlou modrou používáme jen na plochy (štítky, pozadí). Na text dáváme sytější modrou <code>#1F7EC2</code>, protože světle modré písmo na světlém pozadí by nebylo čitelné.</div>
+    <p><b>Písmo:</b> <a href="https://fonts.google.com/specimen/Bricolage+Grotesque" target="_blank" rel="noopener">Bricolage Grotesque</a> z Google Fonts, zdarma. Nadpisy jsou tučné (800) a se staženými mezerami mezi písmeny, proto působí moderně.</p>
+    <p><b>Proč světle modrá u postav:</b> modrá u financí budí důvěru. Necháváme ji ale jen jako akcent (vesta, dveře, tričko), aby to nepůsobilo jako banka.</p>
+  </section>
+
+  <section id="maskot">
+    <span class="step">04</span>
+    <h2>Maskot: tři kola hledání</h2>
+    <p>Nejdůležitější lekce celého projektu: <b>první nápad skoro nikdy není ten finální</b>. A říct „tohle ne“ je stejně cenné jako „tohle ano“.</p>
+    <h3>Kolo 1: zelená kulatá postavička</h3>
+    <p>Šest variant (pán v buřince, počítadlo, kalkulačka, sova, prasátko). Roztomilé, ale moc dětské a málo lidské pro něco tak vážného, jako je hypotéka.</p>
+    <h3>Kolo 2: pět postav × pět stylů</h3>
+    <p>Ruční kresba, plastelína, nálepka, plochý vektor a 3D. Díky tomu bylo hned vidět, co nechceme: <b>všechno kromě 3D vypadalo levně</b>. Ponechali jsme jen 3D animovaný styl.</p>
+    <h3>Kolo 3: padesát 3D postav podle vzoru</h3>
+    <p>Jako vzor nám posloužil maskot z webu <a href="https://frenkee.cz/" target="_blank" rel="noopener">frenkee.cz</a>: mladý člověk s přirozenými proporcemi a v normálním oblečení, ne kulatá figurka. Asistent pak vytvořil 50 různých lidí a zvířátek ve stejném stylu a my vybrali č. 31, <b>kluka s labradorem</b>.</p>
+    <figure><img class="pic" src="../img/3d/31.jpg" alt="Kluk s labradorem, 3D maskot" width="560" height="560" loading="lazy" style="max-width:360px"><figcaption>Vítěz: č. 31, kluk s labradorem. Mladý, sympatický, pes dodává lidskost.</figcaption></figure>
+    <div class="note"><b>Proč funguje</b>Je mladý (oslovuje lidi, kteří kupují první bydlení), má přirozený úsměv a otevřené gesto. Pes je „háček“, který si lidi pamatují. A modrá vesta nese barvu důvěry.</div>
+  </section>
+
+  <section id="rodina">
+    <span class="step">05</span>
+    <h2>Rodina postav, které k sobě sedí</h2>
+    <p>Největší potíž generátorů obrázků: <b>každý obrázek nakreslí trochu jinou postavu</b>. Trik spočívá v tom, že pokaždé přiložíš <b>referenční obrázek</b>.</p>
+    <ol class="list">
+      <li>Vezmeš hotového maskota (kluk s labradorem) jako referenci.</li>
+      <li>Necháš vygenerovat <b>společnou fotku celé rodiny</b> a popíšeš každého člena (vlasy, oblečení, věk).</li>
+      <li>Z nejlepší společné fotky uděláš novou referenci a necháš z ní vygenerovat <b>samostatný portrét každého člena</b>, vždy s jinou rekvizitou (prasátko, kalkulačka, čaj, noviny).</li>
+    </ol>
+    <p>Tímhle postupem vypadají všichni jako jedna rodina: stejný styl, stejné světlo, stejné oblečení.</p>
+  </section>
+
+  <section id="video">
+    <span class="step">06</span>
+    <h2>Namluvené úvodní video</h2>
+    <p>Video má dva záběry, celkem 12 vteřin. Nejdřív obrázky, pak pohyb, nakonec hlas. Nikdy ne všechno najednou.</p>
+    <div class="duo">
+      <figure><img src="img/mluvi.jpg" alt="Kluk s klíči mluví do kamery" width="900" height="506" loading="lazy"><figcaption>Záběr 1: mluví do kamery a drží klíče</figcaption></figure>
+      <figure><img src="img/konec.jpg" alt="Pár se objímá s klíči, pes skáče" width="900" height="506" loading="lazy"><figcaption>Konec záběru 2: pár se obejme, pes skáče</figcaption></figure>
+    </div>
+    <h3>Postup</h3>
+    <ol class="list">
+      <li><b>Scéna jako obrázek.</b> Maskot jako reference a k tomu popis kanceláře s mladým párem u stolu.</li>
+      <li><b>Hlas.</b> Text s emocemi namluvený přes ElevenLabs v3: „Ahoj, já jsem Pan Spočítal! Hypotéku ti spočítám i vyřídím… a klíče od nového domova máš v ruce!“</li>
+      <li><b>Záběr 1, mluvení.</b> Obrázek kluka s klíči a hlas poslané do <b>OmniHuman</b>. Ten rozhýbe pusu přesně podle hlasu, takže to nepůsobí jako komentář přes záběr.</li>
+      <li><b>Záběr 2, akce.</b> <b>Kling 2.5</b> se <b>začátečním i koncovým snímkem</b>: kluk předá klíče, pár se obejme, pes vyskočí.</li>
+      <li><b>Střih.</b> ffmpeg oba záběry spojí, zmenší pro web a vytáhne náhledový obrázek.</li>
+    </ol>
+    <div class="note warn"><b>Na co jsme narazili</b>Kling dvakrát nechal poradce obejmout cizí ženu místo jejího partnera. Pomohlo až dodat <b>koncový snímek</b> (obrázek, jak má scéna skončit), protože pak AI nemá prostor improvizovat. Do „negativního promptu“ jsme navíc napsali <code>advisor hugging anyone</code>.</div>
+    <p>Na webu se video spouští ztlumené (prohlížeče jinak automatické přehrání zablokují) a má tlačítko „Pustit se zvukem“.</p>
+  </section>
+
+  <section id="web">
+    <span class="step">07</span>
+    <h2>Web v jednom souboru</h2>
+    <p>Celý web je jeden soubor <code>index.html</code> a k němu složky s obrázky a videem. Bez WordPressu a bez databáze. Proto je rychlý, nic se na něm nerozbije a hosting nic nestojí.</p>
+    <ul class="list">
+      <li><b>Barvy jako proměnné</b> (<code>--forest</code>, <code>--green</code>…). Změníš je na jednom místě a změní se všude.</li>
+      <li><b>Velké tučné nadpisy</b>, hodně vzduchu, zaoblené rohy (20–28 px) a jemné stíny.</li>
+      <li><b>Mobil první:</b> karty se na telefonu řadí po dvou nebo pod sebe, nic nepřetéká.</li>
+      <li><b>Obrázky zmenšené pro web</b> (JPG, 640 px pro karty, 1600 px pro velké), takže stránka nabíhá rychle.</li>
+      <li><b>Kontrola očima:</b> asistent si po každé změně stránku vyfotí a opraví, co je křivé.</li>
+    </ul>
+  </section>
+
+  <section id="hosting">
+    <span class="step">08</span>
+    <h2>Hosting zdarma a vlastní doména</h2>
+    <ol class="list">
+      <li>Na GitHubu založ repozitář (u nás <code>28zdenek/panspocital</code>) a nahraj do něj web.</li>
+      <li>V repozitáři otevři <b>Settings → Pages</b>, jako zdroj vyber větev <code>main</code> a vyplň vlastní doménu.</li>
+      <li>Ve Wedosu (nebo u jiného registrátora) nastav DNS záznamy:</li>
+    </ol>
+    <div class="scroll"><table class="tbl">
+      <tr><th>Název</th><th>Typ</th><th>Hodnota</th></tr>
+      <tr><td>(prázdné)</td><td>A</td><td>185.199.108.153 · .109.153 · .110.153 · .111.153</td></tr>
+      <tr><td>(prázdné)</td><td>AAAA</td><td>2606:50c0:8000::153 až 8003::153</td></tr>
+      <tr><td>www</td><td>CNAME</td><td>28zdenek.github.io</td></tr>
+    </table></div>
+    <p>Ve Wedosu se změna projevila zhruba do hodiny. Pak v nastavení Pages zapni <b>Enforce HTTPS</b>.</p>
+    <div class="note warn"><b>Když se HTTPS certifikát nevystaví</b>Vlastní doménu v nastavení Pages smaž, ulož, a pak ji tam vrať. GitHub tím znovu spustí vystavení certifikátu. U nás to pomohlo hned.</div>
+    <p><b>Spolupráce:</b> kolegu přidáš v <b>Settings → Collaborators → Add people</b> přes jeho GitHub jméno. Pak může web taky upravovat.</p>
+  </section>
+
+  <section id="sdileni">
+    <span class="step">09</span>
+    <h2>Náhled při sdílení odkazu</h2>
+    <p>Aby se na WhatsAppu, Facebooku nebo Messengeru ukázal hezký obrázek s textem, musí mít stránka v hlavičce tzv. <b>Open Graph</b> značky a obrázek <b>1200 × 630 px</b> (ideálně pod 300 kB).</p>
+    <pre><code>&lt;meta property="og:title" content="Hypotéku ti spočítáme i vyřídíme | Pan Spočítal"&gt;
+&lt;meta property="og:description" content="Od prvního propočtu až po klíče od nového domova."&gt;
+&lt;meta property="og:image" content="https://panspocital.cz/og.jpg"&gt;
+&lt;meta property="og:image:width" content="1200"&gt;
+&lt;meta property="og:image:height" content="630"&gt;</code></pre>
+    <div class="note"><b>WhatsApp si pamatuje starý náhled</b>Když jsi odkaz už jednou poslal, WhatsApp ukazuje starou verzi. Stačí přidat na konec cokoliv, třeba <code>https://panspocital.cz/?v=3</code>, a načte se nový obrázek.</div>
+  </section>
+
+  <section id="prompty">
+    <span class="step">10</span>
+    <h2>Prompty ke zkopírování</h2>
+    <p>Skutečná zadání, ze kterých vznikl maskot, rodina a video. Generátory rozumí nejlíp anglicky. Postavu popisuj vždycky stejnými slovy.</p>
+    <h3>Maskot (bez reference)</h3>
+    <pre><code>3D animated character in modern Pixar style, stylized but natural proportions, expressive friendly face. Young man about 28 with a happy golden labrador dog on a leash, light sky blue puffer vest, grey hoodie, jeans, cheerful. Natural realistic colors, light sky blue as accent. Full body, soft studio light, plain very light grey background, no text.</code></pre>
+    <h3>Scéna se stejnou postavou (s referencí maskota)</h3>
+    <pre><code>Keep this exact character (young man with short brown hair, light sky blue puffer vest over grey hoodie, jeans) and his happy golden labrador dog, same 3D Pixar animation style. Scene: bright modern cozy advisor office, he stands next to a light wooden desk smiling at a happy young couple sitting at the desk, a mortgage contract with a pen lies on the desk, a small model of a family house on the desk. Warm daylight, light sky blue accents, wide shot, no text.</code></pre>
+    <h3>Celá rodina (s referencí maskota)</h3>
+    <pre><code>3D animated family portrait in the exact same character style as the reference. The whole family stands together smiling in front of a cozy modern family house with a light blue door: the young man from the reference (dad), his wife (shoulder-length chestnut hair, soft light blue cardigan, white tee, jeans), a little girl about 5 with pigtails in a yellow dress, a boy about 9 in a light blue t-shirt with an "=" sign, the golden labrador sitting in front, grandma with grey curly hair, glasses and a knitted cardigan, grandpa with white moustache, flat cap and a sweater vest. Soft daylight, full bodies visible.</code></pre>
+    <h3>Jeden člen rodiny (s referencí společné fotky)</h3>
+    <pre><code>Full body 3D animated character portrait of the GRANDPA from the reference family (white moustache, grey flat cap, brown sweater vest over beige shirt), same character design and style, standing alone, cheerful, giving thumbs up, holding a newspaper, plain soft light grey studio background</code></pre>
+    <h3>Video, akční záběr (Kling 2.5, začáteční + koncový snímek)</h3>
+    <pre><code>3D Pixar-style animation, bright cozy office, static camera. The young advisor in the light blue puffer vest leans over the desk and hands a shiny set of house keys to the woman, then steps back and smiles proudly. The woman lifts the keys joyfully and the couple stand up and hug each other. The golden labrador jumps up on its hind legs wagging its tail. Consistent characters, nobody talks.
+
+Negative: advisor hugging anyone, distorted faces, extra fingers, morphing, text, blurry</code></pre>
+    <h3>Hlas (ElevenLabs v3)</h3>
+    <pre><code>[cheerful] Ahoj, já jsem Pan Spočítal! Hypotéku ti spočítám i vyřídím... [excited] a klíče od nového domova máš v ruce!</code></pre>
+  </section>
+
+  <section id="cena">
+    <span class="step">11</span>
+    <h2>Kolik to stálo</h2>
+    <p>Hosting je zdarma, platí se jen doména (pár stovek ročně) a kredity v MagniFicu (plán Premium+). Orientační ceny v kreditech:</p>
+    <div class="scroll"><table class="tbl">
+      <tr><th>Co</th><th>Kreditů</th></tr>
+      <tr><td>Jeden obrázek (maskot, scéna, portrét)</td><td>75</td></tr>
+      <tr><td>Video Kling 2.5, 5 s ve Full HD</td><td>325</td></tr>
+      <tr><td>Video Kling 2.5, 10 s ve Full HD</td><td>650</td></tr>
+      <tr><td>Rozmluvení postavy OmniHuman (cca 8 s)</td><td>≈ 1 440</td></tr>
+      <tr><td>Namluvení textu ElevenLabs</td><td>≈ 25</td></tr>
+      <tr><td>Celá rodina (2 společné fotky + 6 portrétů)</td><td>≈ 600</td></tr>
+      <tr><td>50 návrhů maskota</td><td>≈ 3 750</td></tr>
+    </table></div>
+    <div class="note"><b>Šetři kredity</b>Nejdřív levné obrázky, video až když scéna sedí. Drahé modely videa (Seedance za 4 000–8 000 kreditů) jsme nepotřebovali, Kling s klíčovými snímky stačil.</div>
+  </section>
+
+  <section id="tipy">
+    <span class="step">12</span>
+    <h2>10 pravidel na závěr</h2>
+    <ol class="list">
+      <li><b>Nejdřív zadání, pak tvorba.</b> Tón, slib a cílovka ušetří desítky zbytečných návrhů.</li>
+      <li><b>Ukaž vzor.</b> Odkaz na web, který se ti líbí (u nás Frenkee), řekne víc než odstavec textu.</li>
+      <li><b>Řekni jasně, co nechceš.</b> „Žádná plastelína, žádný plochý vektor“ posunulo projekt nejvíc.</li>
+      <li><b>Generuj hodně a vybírej.</b> 50 návrhů s čísly, pak TOP 5, pak jeden.</li>
+      <li><b>Jedna postava = jedna reference.</b> Bez ní se postava pokaždé změní.</li>
+      <li><b>Popisuj postavu pořád stejně</b> (vlasy, vesta, mikina, džíny, labrador).</li>
+      <li><b>Video skládej ze záběrů.</b> Krátké záběry se ovládají líp než jeden dlouhý.</li>
+      <li><b>Koncový snímek drží AI na uzdě.</b> Když dělá nesmysly, ukaž jí, jak má scéna skončit.</li>
+      <li><b>Mluvení řeš přes lip-sync</b>, ne hlasem přes video. Jinak to působí jako dabing.</li>
+      <li><b>Kontroluj na mobilu a ve WhatsAppu.</b> Tam to uvidí většina lidí.</li>
+    </ol>
+  </section>
+</main>
+
+<footer class="wrap">© 2026 panspocital.cz · <a href="/">zpět na hlavní stránku</a></footer>
+</body>
+</html>
