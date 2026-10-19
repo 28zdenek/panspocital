@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design systém Pan Spočítal</title>
+<meta name="description" content="Design systém značky Pan Spočítal: logo, barvy, typografie, mezery, komponenty, maskot a rodina, hlas a tón.">
+<link rel="canonical" href="https://panspocital.cz/design-system/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pan Spočítal">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:url" content="https://panspocital.cz/design-system/">
+<meta property="og:title" content="Design systém Pan Spočítal">
+<meta property="og:description" content="Logo, barvy, písmo, komponenty, maskot a pravidla na jednom místě.">
+<meta property="og:image" content="https://panspocital.cz/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/components.css">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+a{color:var(--color-accent)}a:hover{color:var(--color-accent-hover)}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:28px 0}
+.back{font-weight:600;color:var(--color-accent);text-decoration:none}
+.back:hover{text-decoration:underline}
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:48px;align-items:start}
+nav.side{position:sticky;top:24px;display:flex;flex-direction:column;gap:2px;font-size:var(--text-sm)}
+nav.side a{color:var(--color-text-muted);text-decoration:none;padding:6px 12px;border-radius:10px;font-weight:600}
+nav.side a:hover{background:var(--color-accent-soft);color:var(--color-text)}
+.hero{padding:16px 0 40px}
+.sw-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin:16px 0 24px}
+.sw{background:var(--color-surface);border:1px solid var(--color-line);border-radius:var(--radius-md);overflow:hidden;font-size:var(--text-sm);line-height:1.35}
+.sw i{display:block;height:84px}
+.sw div{padding:10px 12px}
+.sw b{display:block}
+.sw code,.tok{font:13px var(--font-mono);color:var(--color-text-muted)}
+.type-row{display:grid;grid-template-columns:160px minmax(0,1fr);gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--color-line)}
+.type-row:last-child{border-bottom:0}
+.type-meta{font-size:var(--text-sm);color:var(--color-text-muted)}
+.box{background:var(--color-surface);border:1px solid var(--color-line);border-radius:var(--radius-lg);padding:24px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.space-row{display:flex;align-items:center;gap:16px;padding:6px 0;font-size:var(--text-sm)}
+.space-row i{display:block;height:16px;background:var(--ps-blue-300);border-radius:4px}
+.space-row code{width:110px;font:13px var(--font-mono);color:var(--color-text-muted)}
+.shape{display:grid;place-items:center;height:110px;background:var(--color-surface);border:1px solid var(--color-line);font-size:var(--text-sm);color:var(--color-text-muted);text-align:center}
+.dodont{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.do,.dont{border-radius:var(--radius-md);padding:16px 20px;font-size:16px}
+.do{background:#E5F4EA;color:#14462A}
+.dont{background:#FBE6E4;color:#6B1D16}
+.do b,.dont b{display:block;margin-bottom:4px}
+.do ul,.dont ul{margin:0;padding-left:20px}
+.logo-stage{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.logo-stage>div{display:grid;place-items:center;min-height:140px;border-radius:var(--radius-lg);border:1px solid var(--color-line);padding:16px}
+.on-dark{background:var(--color-inverse-bg)}
+.on-dark .ps-brand__name b{color:var(--ps-white)}
+.on-dark .ps-brand__name small{color:var(--ps-blue-300)}
+.on-soft{background:var(--color-accent-soft)}
+pre{background:var(--color-inverse-bg);color:var(--color-inverse-text);border-radius:var(--radius-md);padding:18px 20px;overflow-x:auto;font:14px/1.55 var(--font-mono);white-space:pre-wrap;word-break:break-word;margin:10px 0 18px}
+code.i{font:.88em var(--font-mono);background:#E2EDF6;padding:2px 6px;border-radius:6px}
+.tbl{width:100%;border-collapse:collapse;background:var(--color-surface);border:1px solid var(--color-line);border-radius:var(--radius-md);overflow:hidden;font-size:16px}
+.tbl th,.tbl td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--color-line);vertical-align:top}
+.tbl th{background:#E6F0F8}
+.tbl tr:last-child td{border-bottom:0}
+.voice li{margin-bottom:8px}
+footer{border-top:1px solid var(--color-line);padding:28px 0 40px;color:var(--color-text-muted);font-size:15px;margin-top:40px}
+@media (max-width:900px){.layout{grid-template-columns:1fr}nav.side{position:static;flex-direction:row;flex-wrap:wrap}.logo-stage{grid-template-columns:1fr}}
+@media (max-width:900px){.sw-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.type-row{grid-template-columns:1fr;gap:4px}.dodont{grid-template-columns:1fr}}
+</style>
+</head>
+<body class="ps-body">
+<div class="ps-container">
+  <header class="top">
+    <a class="ps-brand" href="/" aria-label="Pan Spočítal – hlavní stránka">
+      <img class="ps-brand__img" src="/img/logo.jpg" alt="" width="240" height="240">
+      <span class="ps-brand__name"><small>Pan</small><b>Spočítal</b></span>
+    </a>
+    <a class="back" href="/">← Zpět na web</a>
+  </header>
+
+  <div class="hero">
+    <span class="ps-tag">Design systém · verze 1.0</span>
+    <h1 class="ps-h1">Jak vypadá a mluví <em>Pan Spočítal</em></h1>
+    <p class="ps-lead">Všechno, co potřebuješ, abys cokoliv nového (stránku, banner, příspěvek, video) udělal ve stejném stylu. Zdrojové soubory jsou na <a href="https://github.com/28zdenek/panspocital" target="_blank" rel="noopener">GitHubu</a>: <code class="i">css/tokens.css</code>, <code class="i">css/components.css</code> a <code class="i">DESIGN.md</code>.</p>
+  </div>
+
+  <div class="layout">
+    <nav class="side" aria-label="Obsah">
+      <a href="#principy">Principy</a>
+      <a href="#logo">Logo</a>
+      <a href="#barvy">Barvy</a>
+      <a href="#typografie">Typografie</a>
+      <a href="#mezery">Mezery a tvary</a>
+      <a href="#komponenty">Komponenty</a>
+      <a href="#maskot">Maskot a rodina</a>
+      <a href="#hlas">Hlas a tón</a>
+      <a href="#pristupnost">Přístupnost</a>
+      <a href="#pouziti">Jak to použít</a>
+    </nav>
+
+    <main>
+      <section class="ps-section" id="principy" style="padding-top:0">
+        <h2 class="ps-h2">Principy</h2>
+        <div class="ps-grid ps-grid--2">
+          <div class="ps-card"><div class="ps-card__body"><span class="ps-label">01</span><h3 class="ps-card__title">Po lidsku</h3><p class="ps-card__text">Finance vysvětlujeme jako kamarád, ne jako banka. Tykáme, mluvíme krátce a bez žargonu.</p></div></div>
+          <div class="ps-card"><div class="ps-card__body"><span class="ps-label">02</span><h3 class="ps-card__title">Klid a důvěra</h3><p class="ps-card__text">Světlé pozadí, modrá, hodně vzduchu. Nic nebliká, nic nekřičí.</p></div></div>
+          <div class="ps-card"><div class="ps-card__body"><span class="ps-label">03</span><h3 class="ps-card__title">Postavy jsou hrdinové</h3><p class="ps-card__text">Žádné ikonky ani fotobanky. Příběh nesou Pan Spočítal, jeho rodina a labrador.</p></div></div>
+          <div class="ps-card"><div class="ps-card__body"><span class="ps-label">04</span><h3 class="ps-card__title">Jedno slovo v barvě</h3><p class="ps-card__text">V nadpisu zvýrazňujeme vždy jen jedno klíčové slovo. Oko ví, kam se podívat.</p></div></div>
+        </div>
+      </section>
+
+      <section class="ps-section" id="logo">
+        <h2 class="ps-h2">Logo</h2>
+        <p>Kulatý výřez s Panem Spočítalem a labradorem a vedle něj nápis ve dvou řádcích: <b>Pan</b> (modře, menší) a <b>Spočítal</b> (extra tučně). Výřez má bílý okraj 3 px a jemný stín.</p>
+        <div class="logo-stage">
+          <div><a class="ps-brand" href="#logo"><img class="ps-brand__img" src="/img/logo.jpg" alt="" width="240" height="240"><span class="ps-brand__name"><small>Pan</small><b>Spočítal</b></span></a></div>
+          <div class="on-dark"><span class="ps-brand"><img class="ps-brand__img" src="/img/logo.jpg" alt="" width="240" height="240"><span class="ps-brand__name"><small>Pan</small><b>Spočítal</b></span></span></div>
+          <div class="on-soft"><img class="ps-brand__img" src="/img/logo.jpg" alt="Ikona Pan Spočítal" width="240" height="240" style="width:96px;height:96px"></div>
+        </div>
+        <p class="ps-hint" style="margin-top:10px">Na světlém pozadí · na tmavém pozadí · samotná ikona (favicon, profilovka na sítích)</p>
+        <div class="dodont" style="margin-top:16px">
+          <div class="do"><b>Ano</b><ul><li>Ikona vždy v kruhu.</li><li>Minimální velikost ikony 32 px.</li><li>Kolem loga volné místo aspoň ve velikosti písmene „S“.</li></ul></div>
+          <div class="dont"><b>Ne</b><ul><li>Nedeformovat, neotáčet, nedávat do čtverce.</li><li>Nepřebarvovat nápis jinými barvami než z palety.</li><li>Nepoužívat starou zelenou postavičku.</li></ul></div>
+        </div>
+        <p style="margin-top:16px">Soubory: <a href="/img/logo.jpg">logo.jpg</a> (240 px) · <a href="/favicon.png">favicon.png</a> (64 px) · <a href="/apple-touch-icon.png">apple-touch-icon.png</a> (180 px)</p>
+      </section>
+
+      <section class="ps-section" id="barvy">
+        <h2 class="ps-h2">Barvy</h2>
+        <p>Paleta vychází z vesty maskota. Modrá budí důvěru, ale používáme ji střídmě. V kódu vždy sahej po <b>sémantických</b> tokenech (<code class="i">--color-accent</code>), ne přímo po hex kódu.</p>
+        <h3 class="ps-h3">Hlavní</h3>
+        <div class="sw-grid">
+          <div class="sw"><i style="background:#12355B"></i><div><b>Noční</b><code>#12355B</code><br><span class="tok">--color-text</span></div></div>
+          <div class="sw"><i style="background:#1A72B3"></i><div><b>Modrá</b><code>#1A72B3</code><br><span class="tok">--color-accent</span></div></div>
+          <div class="sw"><i style="background:#155E94"></i><div><b>Modrá tmavá</b><code>#155E94</code><br><span class="tok">--color-accent-hover</span></div></div>
+          <div class="sw"><i style="background:#CFE9FB"></i><div><b>Světlá</b><code>#CFE9FB</code><br><span class="tok">--color-accent-soft</span></div></div>
+          <div class="sw"><i style="background:#F4F8FB"></i><div><b>Pozadí</b><code>#F4F8FB</code><br><span class="tok">--color-bg</span></div></div>
+          <div class="sw"><i style="background:#FFFFFF"></i><div><b>Bílá</b><code>#FFFFFF</code><br><span class="tok">--color-surface</span></div></div>
+        </div>
+        <h3 class="ps-h3">Doplňkové</h3>
+        <div class="sw-grid">
+          <div class="sw"><i style="background:#3D5670"></i><div><b>Vedlejší text</b><code>#3D5670</code><br><span class="tok">--color-text-muted</span></div></div>
+          <div class="sw"><i style="background:#4FB3E8"></i><div><b>Nebe</b><code>#4FB3E8</code><br><span class="tok">--ps-blue-400</span></div></div>
+          <div class="sw"><i style="background:#8FD0F2"></i><div><b>Vesta</b><code>#8FD0F2</code><br><span class="tok">--ps-blue-300</span></div></div>
+          <div class="sw"><i style="background:#E3F1FB"></i><div><b>Poznámka</b><code>#E3F1FB</code><br><span class="tok">--color-info-bg</span></div></div>
+          <div class="sw"><i style="background:#DCE7F0"></i><div><b>Linka</b><code>#DCE7F0</code><br><span class="tok">--color-line</span></div></div>
+          <div class="sw"><i style="background:#FFF4D6"></i><div><b>Varování</b><code>#FFF4D6</code><br><span class="tok">--color-warn-bg</span></div></div>
+        </div>
+        <h3 class="ps-h3">Kontrast (WCAG)</h3>
+        <div class="ps-scroll" style="overflow-x:auto"><table class="tbl">
+          <tr><th>Kombinace</th><th>Poměr</th><th>Použití</th></tr>
+          <tr><td>Noční na pozadí</td><td>11,7 : 1</td><td>Veškerý text ✅</td></tr>
+          <tr><td>Vedlejší text na pozadí</td><td>7,1 : 1</td><td>Popisky, odstavce ✅</td></tr>
+          <tr><td>Modrá na pozadí</td><td>4,8 : 1</td><td>Odkazy, zvýraznění ✅</td></tr>
+          <tr><td>Bílá na modré</td><td>5,1 : 1</td><td>Tlačítka ✅</td></tr>
+          <tr><td>Noční na světlé</td><td>9,9 : 1</td><td>Štítky ✅</td></tr>
+          <tr><td>Světlá / Vesta jako text</td><td>&lt; 2 : 1</td><td>Nikdy na text ❌, jen plochy</td></tr>
+        </table></div>
+      </section>
+
+      <section class="ps-section" id="typografie">
+        <h2 class="ps-h2">Typografie</h2>
+        <p>Jediné písmo: <a href="https://fonts.google.com/specimen/Bricolage+Grotesque" target="_blank" rel="noopener">Bricolage Grotesque</a> (Google Fonts, zdarma, česká diakritika). Řezy 400, 600, 800.</p>
+        <div class="box">
+          <div class="type-row"><div class="type-meta">H1 · 800<br><span class="tok">--text-h1 · -0,045em</span></div><div class="ps-h1" style="margin:0">Hypotéku ti <em>spočítáme</em></div></div>
+          <div class="type-row"><div class="type-meta">H2 · 800<br><span class="tok">--text-h2 · -0,03em</span></div><div class="ps-h2" style="margin:0">Pan Spočítal a jeho rodina</div></div>
+          <div class="type-row"><div class="type-meta">H3 · 800<br><span class="tok">--text-h3 · 22 px</span></div><div class="ps-h3" style="margin:0">Jak to funguje</div></div>
+          <div class="type-row"><div class="type-meta">Perex · 400<br><span class="tok">--text-lg</span></div><p class="ps-lead">Od prvního propočtu až po klíče od nového domova.</p></div>
+          <div class="type-row"><div class="type-meta">Text · 400<br><span class="tok">--text-md · 18 px / 1,6</span></div><p style="margin:0">Spočítáme, kolik si můžeš půjčit, porovnáme banky a vyřídíme papíry.</p></div>
+          <div class="type-row"><div class="type-meta">Štítek · 600<br><span class="tok">--text-xs · velká písmena</span></div><span class="ps-label">Hypotéky · úvěry · pojištění</span></div>
+        </div>
+        <div class="ps-note"><b>Pravidlo</b>Nadpisy vždy extra tučné (800) a stažené k sobě. Délka řádku textu max. ~60 znaků. Nikdy nepoužívej víc než jedno písmo.</div>
+      </section>
+
+      <section class="ps-section" id="mezery">
+        <h2 class="ps-h2">Mezery a tvary</h2>
+        <p>Mezery jsou násobky 4 px. Mezi sekcemi dáváme hodně vzduchu (48 px a víc).</p>
+        <div class="box">
+          <div class="space-row"><code>--space-2</code><i style="width:8px"></i>8 px</div>
+          <div class="space-row"><code>--space-4</code><i style="width:16px"></i>16 px</div>
+          <div class="space-row"><code>--space-6</code><i style="width:24px"></i>24 px</div>
+          <div class="space-row"><code>--space-8</code><i style="width:32px"></i>32 px</div>
+          <div class="space-row"><code>--space-12</code><i style="width:48px"></i>48 px</div>
+          <div class="space-row"><code>--space-16</code><i style="width:64px"></i>64 px</div>
+        </div>
+        <h3 class="ps-h3">Zaoblení a stíny</h3>
+        <div class="ps-grid ps-grid--4">
+          <div class="shape" style="border-radius:var(--radius-sm)">sm · 8 px<br>malé prvky</div>
+          <div class="shape" style="border-radius:var(--radius-md)">md · 18 px<br>poznámky, postavy</div>
+          <div class="shape" style="border-radius:var(--radius-lg);box-shadow:var(--shadow-md)">lg · 24 px<br>karty + shadow-md</div>
+          <div class="shape" style="border-radius:var(--radius-xl);box-shadow:var(--shadow-lg)">xl · 28 px<br>fotky + shadow-lg</div>
+        </div>
+        <p class="ps-hint" style="margin-top:12px">Stíny jsou vždy dlouhé, měkké a tónované do modra (<code class="i">rgba(18,53,91,…)</code>), nikdy tvrdé šedé.</p>
+      </section>
+
+      <section class="ps-section" id="komponenty">
+        <h2 class="ps-h2">Komponenty</h2>
+        <h3 class="ps-h3">Tlačítka</h3>
+        <div class="box row">
+          <button class="ps-btn ps-btn--primary" type="button">Spočítat hypotéku</button>
+          <button class="ps-btn ps-btn--secondary" type="button">Jak to funguje</button>
+          <button class="ps-btn ps-btn--dark" type="button">Chci nabídku</button>
+          <button class="ps-btn ps-btn--primary" type="button" disabled>Neaktivní</button>
+        </div>
+        <pre><code>&lt;a class="ps-btn ps-btn--primary" href="#"&gt;Spočítat hypotéku&lt;/a&gt;</code></pre>
+        <p class="ps-hint">Na stránce je jen jedno hlavní (modré) tlačítko. Text tlačítka je sloveso: „Spočítat“, „Chci nabídku“, ne „Odeslat“.</p>
+
+        <h3 class="ps-h3">Štítky</h3>
+        <div class="box row"><span class="ps-tag">Pracovní ukázka</span><span class="ps-tag">Rodina Spočítalových</span><span class="ps-tag ps-tag--dark">Novinka</span></div>
+        <pre><code>&lt;span class="ps-tag"&gt;Rodina Spočítalových&lt;/span&gt;</code></pre>
+
+        <h3 class="ps-h3">Karta</h3>
+        <div class="ps-grid ps-grid--3">
+          <article class="ps-card ps-card--hover"><img class="ps-card__media" src="/img/rodina/kluk.jpg" alt="Malý Spočítal s kalkulačkou" width="640" height="640" loading="lazy"><div class="ps-card__body"><span class="ps-label">Spoření</span><h3 class="ps-card__title">Kalkulačka spoření</h3><p class="ps-card__text">Kolik našetříš za 10 let, když dáš stranou 2 000 Kč měsíčně?</p></div></article>
+          <article class="ps-card ps-card--hover"><img class="ps-card__media" src="/img/rodina/babicka.jpg" alt="Babička s čajem" width="640" height="640" loading="lazy"><div class="ps-card__body"><span class="ps-label">Pojištění</span><h3 class="ps-card__title">Klidné stáří</h3><p class="ps-card__text">Rezerva a pojištění, aby tě nic nepřekvapilo.</p></div></article>
+          <article class="ps-card ps-card--hover"><img class="ps-card__media" src="/img/rodina/pan.jpg" alt="Pan Spočítal s labradorem" width="640" height="640" loading="lazy"><div class="ps-card__body"><span class="ps-label">Hypotéky</span><h3 class="ps-card__title">První bydlení</h3><p class="ps-card__text">Od propočtu po klíče. Vyřídíme to za tebe.</p></div></article>
+        </div>
+        <pre><code>&lt;article class="ps-card ps-card--hover"&gt;
+  &lt;img class="ps-card__media" src="…" alt="…"&gt;
+  &lt;div class="ps-card__body"&gt;
+    &lt;span class="ps-label"&gt;Hypotéky&lt;/span&gt;
+    &lt;h3 class="ps-card__title"&gt;První bydlení&lt;/h3&gt;
+    &lt;p class="ps-card__text"&gt;…&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+
+        <h3 class="ps-h3">Poznámky</h3>
+        <div class="ps-note"><b>Tip</b>Informační box: modré pozadí, nadpis tučně na prvním řádku.</div>
+        <div class="ps-note ps-note--warn"><b>Pozor</b>Varování: teplé žluté pozadí. Používej střídmě.</div>
+
+        <h3 class="ps-h3">Formulář</h3>
+        <div class="box ps-grid ps-grid--2">
+          <div class="ps-field"><label for="ds-castka">Kolik si chceš půjčit?</label><input class="ps-input" id="ds-castka" inputmode="numeric" placeholder="např. 4 500 000 Kč"><span class="ps-hint">Stačí odhad, upřesníme spolu.</span></div>
+          <div class="ps-field"><label for="ds-tel">Telefon</label><input class="ps-input" id="ds-tel" type="tel" placeholder="+420 …" autocomplete="tel"><span class="ps-hint">Ozveme se do 24 hodin.</span></div>
+        </div>
+
+        <h3 class="ps-h3">Číslo kroku a fotka</h3>
+        <div class="box row"><span class="ps-step">01</span><span class="ps-step">02</span><span class="ps-step">03</span></div>
+        <img class="ps-photo" style="margin-top:16px" src="/img/rodina/rodina.jpg" alt="Rodina Spočítalových" width="1600" height="900" loading="lazy">
+      </section>
+
+      <section class="ps-section" id="maskot">
+        <h2 class="ps-h2">Maskot a rodina</h2>
+        <p>3D animovaný styl (jako z animovaného filmu), přirozené proporce, normální oblečení. Světle modrá jen jako akcent v oblečení.</p>
+        <div class="ps-grid ps-grid--4">
+          <figure class="ps-character"><img src="/img/rodina/pan.jpg" alt="Pan Spočítal" width="640" height="640" loading="lazy"><figcaption><strong>Pan Spočítal</strong>Hlavní postava. Modrá péřová vesta, šedá mikina, džíny.</figcaption></figure>
+          <figure class="ps-character"><img src="/img/rodina/pes.jpg" alt="Labrador" width="640" height="640" loading="lazy"><figcaption><strong>Labrador</strong>Zlatý, modrý obojek s klíčkem ve tvaru domku.</figcaption></figure>
+          <figure class="ps-character"><img src="/img/rodina/manzelka.jpg" alt="Paní Spočítalová" width="640" height="640" loading="lazy"><figcaption><strong>Paní Spočítalová</strong>Rozpočet, domácnost.</figcaption></figure>
+          <figure class="ps-character"><img src="/img/rodina/holcicka.jpg" alt="Malá Spočítalová" width="640" height="640" loading="lazy"><figcaption><strong>Malá Spočítalová</strong>Spoření, děti.</figcaption></figure>
+          <figure class="ps-character"><img src="/img/rodina/kluk.jpg" alt="Malý Spočítal" width="640" height="640" loading="lazy"><figcaption><strong>Malý Spočítal</strong>Kalkulačky, „=“ na tričku.</figcaption></figure>
+          <figure class="ps-character"><img src="/img/rodina/babicka.jpg" alt="Babička" width="640" height="640" loading="lazy"><figcaption><strong>Babička</strong>Pojištění, rezerva, jistota.</figcaption></figure>
+          <figure class="ps-character"><img src="/img/rodina/deda.jpg" alt="Děda" width="640" height="640" loading="lazy"><figcaption><strong>Děda</strong>Zkušenost, úroky, důchod.</figcaption></figure>
+        </div>
+        <h3 class="ps-h3">Která postava ke kterému tématu</h3>
+        <div style="overflow-x:auto"><table class="tbl">
+          <tr><th>Téma</th><th>Postava</th></tr>
+          <tr><td>Hypotéky, první bydlení, refinancování</td><td>Pan Spočítal + labrador</td></tr>
+          <tr><td>Rodinný rozpočet, úvěry, konsolidace</td><td>Paní Spočítalová</td></tr>
+          <tr><td>Spoření, děti, stavební spoření</td><td>Malá Spočítalová, Malý Spočítal</td></tr>
+          <tr><td>Pojištění, rezervy, důchod</td><td>Babička, Děda</td></tr>
+          <tr><td>Děkovná stránka, 404, chyby</td><td>Labrador (vždy pomůže náladě)</td></tr>
+        </table></div>
+        <h3 class="ps-h3">Základ promptu pro nové obrázky</h3>
+        <p>Vždy přilož referenční obrázek postavy (z <code class="i">img/rodina/</code>) a začni tímto textem:</p>
+        <pre><code>Keep this exact character (young man with short brown hair, light sky blue puffer vest over grey hoodie, jeans) and his happy golden labrador with a blue collar, same 3D Pixar animation style. [SCÉNA]. Natural realistic colors, light sky blue as accent, soft daylight, no text.</code></pre>
+        <div class="dodont">
+          <div class="do"><b>Ano</b><ul><li>3D animovaný styl, měkké světlo.</li><li>Postavy se usmívají, otevřená gesta.</li><li>Rekvizity z financí: klíče, domek, kalkulačka, prasátko.</li></ul></div>
+          <div class="dont"><b>Ne</b><ul><li>Ruční kresba, plastelína, nálepky, plochý vektor.</li><li>Poradce, který objímá klienty.</li><li>Hromady peněz, zlato, „zbohatni rychle“.</li></ul></div>
+        </div>
+      </section>
+
+      <section class="ps-section" id="hlas">
+        <h2 class="ps-h2">Hlas a tón</h2>
+        <ul class="voice">
+          <li><b>Tykáme.</b> „Hypotéku ti spočítáme“, ne „Vám“.</li>
+          <li><b>My děláme práci, ty máš klid.</b> Slovesa: spočítáme, vyřídíme, ohlídáme, ozveme se.</li>
+          <li><b>Krátké věty.</b> Jedna myšlenka, jedna věta. Žádný bankovní žargon (RPSN vysvětlíme lidsky).</li>
+          <li><b>Lehký humor, ne vtipkování o penězích.</b> Vtip patří postavám („Pamatuje si každý úrok.“), ne číslům.</li>
+          <li><b>Konkrétně.</b> „Ozveme se do 24 hodin“ místo „brzy vás kontaktujeme“.</li>
+        </ul>
+        <div class="dodont">
+          <div class="do"><b>Ano</b>„Od prvního propočtu až po klíče od nového domova.“</div>
+          <div class="dont"><b>Ne</b>„Komplexní řešení financování nemovitostí na míru Vašim potřebám.“</div>
+        </div>
+      </section>
+
+      <section class="ps-section" id="pristupnost">
+        <h2 class="ps-h2">Přístupnost</h2>
+        <ul>
+          <li>Text vždy s kontrastem aspoň 4,5 : 1 (viz tabulka u barev).</li>
+          <li>Klikací prvky aspoň 44 × 44 px, tlačítka mají výšku 48 px.</li>
+          <li>Viditelný focus: modrý obrys 3 px (<code class="i">:focus-visible</code>).</li>
+          <li>Každý obrázek s postavou má popisek (<code class="i">alt</code>), dekorace mají prázdný alt.</li>
+          <li>Video se spouští ztlumené a má tlačítko pro zvuk. Respektujeme „omezit pohyb“ v systému.</li>
+        </ul>
+      </section>
+
+      <section class="ps-section" id="pouziti">
+        <h2 class="ps-h2">Jak to použít</h2>
+        <p>Na jakékoli nové stránce stačí do hlavičky vložit:</p>
+        <pre><code>&lt;link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&amp;display=swap" rel="stylesheet"&gt;
+&lt;link rel="stylesheet" href="/css/tokens.css"&gt;
+&lt;link rel="stylesheet" href="/css/components.css"&gt;</code></pre>
+        <p>a na <code class="i">&lt;body&gt;</code> dát třídu <code class="i">ps-body</code>. Pak používej třídy <code class="i">ps-…</code> z této stránky.</p>
+        <div style="overflow-x:auto"><table class="tbl">
+          <tr><th>Soubor v repozitáři</th><th>Co obsahuje</th></tr>
+          <tr><td><a href="https://github.com/28zdenek/panspocital/blob/main/css/tokens.css" target="_blank" rel="noopener">css/tokens.css</a></td><td>Barvy, písmo, mezery, zaoblení, stíny, pohyb</td></tr>
+          <tr><td><a href="https://github.com/28zdenek/panspocital/blob/main/css/components.css" target="_blank" rel="noopener">css/components.css</a></td><td>Tlačítka, štítky, karty, poznámky, formulář, logo, mřížky</td></tr>
+          <tr><td><a href="https://github.com/28zdenek/panspocital/blob/main/DESIGN.md" target="_blank" rel="noopener">DESIGN.md</a></td><td>Pravidla značky v textu (i pro AI asistenty)</td></tr>
+          <tr><td><a href="https://github.com/28zdenek/panspocital/tree/main/img/rodina" target="_blank" rel="noopener">img/rodina/</a></td><td>Reference postav pro nové obrázky</td></tr>
+        </table></div>
+        <div class="ps-note"><b>Pro AI asistenta</b>Když budeš s Claude Code dělat novou stránku, napiš: „Přečti si DESIGN.md a použij css/tokens.css a css/components.css.“ Výsledek pak bude ve stejném stylu.</div>
+      </section>
+    </main>
+  </div>
+
+  <footer>© 2026 panspocital.cz · Design systém v1.0 · <a href="/navod/">Jak to vzniklo</a> · <a href="https://github.com/28zdenek/panspocital" target="_blank" rel="noopener">GitHub</a></footer>
+</div>
+</body>
+</html>

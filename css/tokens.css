@@ -1,0 +1,109 @@
+/* ==========================================================
+   Pan Spočítal – design tokeny
+   Jediný zdroj pravdy pro barvy, písmo, mezery, tvary a pohyb.
+   Dokumentace: /DESIGN.md · živě: https://panspocital.cz/design-system/
+   ========================================================== */
+
+:root{
+  /* ---- Základní paleta (podle vesty maskota) ---- */
+  --ps-navy-900:#0B2440;
+  --ps-navy-800:#12355B;   /* hlavní text, tmavé plochy */
+  --ps-navy-600:#3D5670;   /* vedlejší text */
+  --ps-blue-700:#155E94;   /* hover akcentu */
+  --ps-blue-600:#1A72B3;   /* akcent: odkazy, zvýraznění v nadpisu, tlačítka */
+  --ps-blue-400:#4FB3E8;
+  --ps-blue-300:#8FD0F2;   /* barva vesty */
+  --ps-blue-100:#CFE9FB;   /* štítky, světlé plochy */
+  --ps-blue-50:#E3F1FB;    /* poznámky, pozadí boxů */
+  --ps-gray-50:#F4F8FB;    /* pozadí stránky */
+  --ps-gray-200:#DCE7F0;   /* linky, okraje */
+  --ps-white:#FFFFFF;
+  --ps-warm-100:#FFF4D6;   /* varování */
+  --ps-warm-800:#5B4300;
+  --ps-gold-400:#E9B949;   /* labrador – jen v ilustracích, ne v UI */
+
+  /* ---- Sémantické barvy (v komponentách používej jen tyhle) ---- */
+  --color-bg:var(--ps-gray-50);
+  --color-surface:var(--ps-white);
+  --color-text:var(--ps-navy-800);
+  --color-text-muted:var(--ps-navy-600);
+  --color-accent:var(--ps-blue-600);
+  --color-accent-hover:var(--ps-blue-700);
+  --color-accent-soft:var(--ps-blue-100);
+  --color-info-bg:var(--ps-blue-50);
+  --color-info-text:var(--ps-navy-800);
+  --color-warn-bg:var(--ps-warm-100);
+  --color-warn-text:var(--ps-warm-800);
+  --color-line:var(--ps-gray-200);
+  --color-inverse-bg:var(--ps-navy-800);
+  --color-inverse-text:#E3F1FB;
+
+  /* ---- Typografie ---- */
+  --font-sans:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --weight-regular:400;
+  --weight-semibold:600;
+  --weight-black:800;
+  --text-xs:13px;
+  --text-sm:15px;
+  --text-md:18px;
+  --text-lg:clamp(18px,2.2vw,22px);
+  --text-h3:22px;
+  --text-h2:clamp(26px,3.6vw,38px);
+  --text-h1:clamp(38px,7vw,76px);
+  --tracking-display:-.045em;
+  --tracking-heading:-.03em;
+  --tracking-label:.06em;
+  --leading-tight:1;
+  --leading-body:1.6;
+
+  /* ---- Mezery (násobky 4 px) ---- */
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:20px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-10:40px;
+  --space-12:48px;
+  --space-16:64px;
+  --container:1180px;
+  --container-text:980px;
+  --gutter:20px;
+  --gutter-mobile:16px;
+
+  /* ---- Tvary ---- */
+  --radius-sm:8px;
+  --radius-md:18px;
+  --radius-lg:24px;
+  --radius-xl:28px;
+  --radius-pill:999px;
+
+  /* ---- Stíny (vždy do modra, nikdy šedé) ---- */
+  --shadow-sm:0 6px 16px -6px rgba(18,53,91,.35);
+  --shadow-md:0 18px 40px -20px rgba(18,53,91,.35);
+  --shadow-lg:0 30px 60px -30px rgba(18,53,91,.45);
+
+  /* ---- Pohyb ---- */
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --dur-fast:.15s;
+  --dur:.2s;
+
+  /* ---- Zpětná kompatibilita (staré názvy z první verze webu) ---- */
+  --forest:var(--color-text);
+  --green:var(--color-accent);
+  --mid:var(--ps-blue-400);
+  --fresh:var(--ps-blue-300);
+  --lime:var(--color-accent-soft);
+  --bg:var(--color-bg);
+  --card:var(--color-surface);
+  --muted:var(--color-text-muted);
+  --line:var(--color-line);
+  --sky:var(--color-info-bg);
+  --navy:var(--ps-navy-800);
+}
+
+@media (prefers-reduced-motion:reduce){
+  :root{--dur-fast:0s;--dur:0s}
+}

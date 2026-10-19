@@ -28,8 +28,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
 <style>
-:root{--forest:#12355B;--green:#1F7EC2;--mid:#4FB3E8;--fresh:#8FD0F2;--lime:#CFE9FB;--bg:#F4F8FB;--card:#FFFFFF;--muted:#3D5670;--line:#DCE7F0}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--forest);font-family:'Bricolage Grotesque',system-ui,sans-serif;line-height:1.5}
@@ -136,7 +136,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 
 </main>
 
-<footer class="wrap">© 2026 panspocital.cz · pracovní verze · <a href="/navod/" style="color:var(--green);font-weight:600">Jak to vzniklo? Návod →</a></footer>
+<footer class="wrap">© 2026 panspocital.cz · pracovní verze · <a href="/navod/" style="color:var(--green);font-weight:600">Jak to vzniklo? Návod →</a> · <a href="/design-system/" style="color:var(--green);font-weight:600">Design systém</a></footer>
 <script>
 (function(){var v=document.getElementById('intro'),b=document.getElementById('zvuk');if(!v||!b)return;
 b.addEventListener('click',function(){v.muted=false;v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){});b.hidden=true;});
