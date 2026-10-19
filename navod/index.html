@@ -55,9 +55,10 @@ section{padding:44px 0;border-top:1px solid var(--line)}
 .toc a:hover{color:var(--green)}
 .tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:20px}
 .tool{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 20px}
-.tool b{display:block;font-size:20px;letter-spacing:-.02em}
+.tool>b{display:block;font-size:20px;letter-spacing:-.02em}
 .tool small{display:inline-block;font-weight:600;color:var(--green);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
 .tool p{margin:0;color:var(--muted);font-size:16px}
+.skill p+p{margin-top:10px}.get{font-size:15px}.get code{word-break:break-all}
 .note{background:var(--sky);color:var(--navy);border-radius:20px;padding:16px 20px;margin:18px 0;font-size:17px}
 .note.warn{background:#FFF4D6;color:#5B4300}
 .note>b:first-child{display:block;margin-bottom:2px}
@@ -110,7 +111,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
       <li><a href="#maskot">Maskot: tři kola hledání</a></li>
       <li><a href="#rodina">Rodina postav, které k sobě sedí</a></li>
       <li><a href="#video">Namluvené úvodní video</a></li>
-      <li><a href="#web">Design webu: proč vypadá takhle</a></li>
+      <li><a href="#web">Design webu, skills a audit</a></li>
       <li><a href="#hosting">Hosting zdarma a vlastní doména</a></li>
       <li><a href="#sdileni">Náhled při sdílení odkazu</a></li>
       <li><a href="#prompty">Prompty ke zkopírování</a></li>
@@ -274,6 +275,34 @@ Po dokončení si stránku vyfoť v šířce 1280 a 390 px, zkontroluj a oprav c
 podle barev jeho oblečení, světlou barvu použij na plochy, sytější odstín
 na text, aby byl čitelný. Přebarvi celý web a vyrob nové logo
 (kulatý výřez s maskotem + název), favicon a obrázek pro sdílení 1200×630.</code></pre>
+
+    <h3>Skills a nástroje na design a audit</h3>
+    <p><b>Skill</b> je balíček instrukcí, který AI asistentovi přidá odbornost, třeba „jak dělat špičkový design“ nebo „jak udělat audit webu“. Nainstaluje se jednou a asistent ho pak používá sám, případně ho zavoláš příkazem s lomítkem.</p>
+    <div class="note"><b>Upřímně</b>Na tenhle web jsem žádný designový skill nespouštěl. Design vznikl z pravidel, která mám v sobě (viz výše), a z tvé zpětné vazby. Níže jsou skills, které mám nainstalované a používám na jiné weby. Doporučuju je, hlavně na audit a dotažení detailů.</div>
+    <div class="tools">
+      <div class="tool skill"><b>Impeccable</b><p>Nejlepší designový skill. Návrh, <b>audit</b> (<code>/impeccable audit</code>), kritika (<code>critique</code>), doladění (<code>polish</code>), barvy (<code>colorize</code>), animace (<code>animate</code>), typografie (<code>typeset</code>).</p><p class="get"><a href="https://impeccable.style" target="_blank" rel="noopener">impeccable.style</a> · <a href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener">GitHub</a><br>v terminálu: <code>npx impeccable install</code><br>nebo v Claude Code: <code>/plugin marketplace add pbakaus/impeccable</code></p></div>
+      <div class="tool skill"><b>frontend-design (od Anthropicu)</b><p>Výrazný, ne „AI generický“ vzhled webů a aplikací. Claude ho použije sám, když dělá frontend.</p><p class="get"><a href="https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design" target="_blank" rel="noopener">GitHub</a><br>v Claude Code: <code>/plugin install frontend-design@claude-plugins-official</code></p></div>
+      <div class="tool skill"><b>Figma (MCP + skills)</b><p>Asistent kreslí přímo do Figmy (u nás nástěnka s maskoty) a čte z ní návrhy.</p><p class="get"><a href="https://github.com/figma/mcp-server-guide" target="_blank" rel="noopener">Figma MCP návod</a></p></div>
+      <div class="tool skill"><b>MagniFic (konektor)</b><p>Obrázky, video, hlas, lip-sync, vše přes jeden účet s kredity.</p><p class="get"><a href="https://magnific.ai" target="_blank" rel="noopener">magnific.ai</a>, v Claude.ai zapnout v Nastavení → Konektory</p></div>
+      <div class="tool skill"><b>Další oficiální skills</b><p>Knihovna skills od Anthropicu (dokumenty, prezentace, tvorba vlastních skills…).</p><p class="get"><a href="https://github.com/anthropics/skills" target="_blank" rel="noopener">github.com/anthropics/skills</a> · <a href="https://docs.claude.com/en/docs/claude-code/skills" target="_blank" rel="noopener">návod ke skills</a></p></div>
+      <div class="tool skill"><b>Claude Code</b><p>Samotný asistent v terminálu, který vše řídí.</p><p class="get"><a href="https://claude.com/claude-code" target="_blank" rel="noopener">claude.com/claude-code</a> · <a href="https://docs.claude.com/en/docs/claude-code/overview" target="_blank" rel="noopener">dokumentace</a></p></div>
+    </div>
+    <h3>Audit zdarma, bez instalace</h3>
+    <ul class="list">
+      <li><a href="https://pagespeed.web.dev" target="_blank" rel="noopener">PageSpeed Insights</a>: rychlost, SEO a přístupnost, stačí vložit adresu.</li>
+      <li><a href="https://developer.chrome.com/docs/lighthouse/overview" target="_blank" rel="noopener">Lighthouse</a>: to samé přímo v Chromu (F12 → Lighthouse).</li>
+      <li><a href="https://wave.webaim.org" target="_blank" rel="noopener">WAVE</a>: přístupnost, tedy jestli web zvládnou i lidé se zrakovým omezením.</li>
+      <li><a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener">Contrast Checker</a>: je text dost čitelný na daném pozadí? (Takhle jsme zvolili sytější modrou na text.)</li>
+      <li><a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener">Sharing Debugger</a>: jak vypadá náhled odkazu na Facebooku a Messengeru, a tlačítko na obnovení.</li>
+    </ul>
+    <h3>Prompt na audit</h3>
+    <pre><code>/impeccable audit https://panspocital.cz
+
+nebo bez skillu:
+Udělej audit webu [adresa]: vizuální hierarchie, čitelnost a kontrast,
+mobilní verze, rychlost načítání, přístupnost, texty a výzvy k akci.
+Seřaď nálezy od nejdůležitějšího, u každého napiš proč a jak opravit.
+Vyfoť si stránku v šířce 1280 a 390 px, ať hodnotíš, co opravdu vidíš.</code></pre>
 
     <h3>Technika</h3>
     <ul class="list">
