@@ -60,7 +60,7 @@ section{padding:44px 0;border-top:1px solid var(--line)}
 .tool p{margin:0;color:var(--muted);font-size:16px}
 .note{background:var(--sky);color:var(--navy);border-radius:20px;padding:16px 20px;margin:18px 0;font-size:17px}
 .note.warn{background:#FFF4D6;color:#5B4300}
-.note b{display:block;margin-bottom:2px}
+.note>b:first-child{display:block;margin-bottom:2px}
 ul.list{padding-left:22px;margin:0 0 14px}
 ul.list li{margin-bottom:6px}
 .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:18px 0}
@@ -110,7 +110,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
       <li><a href="#maskot">Maskot: tři kola hledání</a></li>
       <li><a href="#rodina">Rodina postav, které k sobě sedí</a></li>
       <li><a href="#video">Namluvené úvodní video</a></li>
-      <li><a href="#web">Web v jednom souboru</a></li>
+      <li><a href="#web">Design webu: proč vypadá takhle</a></li>
       <li><a href="#hosting">Hosting zdarma a vlastní doména</a></li>
       <li><a href="#sdileni">Náhled při sdílení odkazu</a></li>
       <li><a href="#prompty">Prompty ke zkopírování</a></li>
@@ -214,14 +214,72 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 
   <section id="web">
     <span class="step">07</span>
-    <h2>Web v jednom souboru</h2>
-    <p>Celý web je jeden soubor <code>index.html</code> a k němu složky s obrázky a videem. Bez WordPressu a bez databáze. Proto je rychlý, nic se na něm nerozbije a hosting nic nestojí.</p>
+    <h2>Design webu: proč vypadá takhle</h2>
+    <p>Pozor, tady žádný generátor obrázků nepomáhal. <b>Web není obrázek, je to kód.</b> Napsal ho AI asistent (Claude) přímo v HTML a CSS. Nemá žádnou šablonu a žádný „tajný prompt“. Stojí za ním pár jednoduchých pravidel, která asistent dodržuje, a hodně kol „ukaž mi to → tohle změň“.</p>
+
+    <h3>Sedm pravidel, ze kterých design stojí</h3>
+    <ol class="list">
+      <li><b>Jedno písmo, dvě síly.</b> Bricolage Grotesque: nadpisy v řezu 800 (extra tučné), text v řezu 400. Kontrast mezi nimi dělá „wow“, ne víc písem.</li>
+      <li><b>Nadpisy stažené k sobě.</b> Záporné mezery mezi písmeny (<code>letter-spacing: -0.045em</code>) a řádkování skoro 1. Velká písmena tak drží pohromadě jako logo.</li>
+      <li><b>Jedno slovo v barvě.</b> V nadpisu je barevné jen klíčové slovo („spočítáme“). Oko ví, kam se podívat.</li>
+      <li><b>Malá paleta jako proměnné.</b> Šest barev v <code>:root</code>, nic jiného. Když jsme přecházeli ze zelené na modrou, změnilo se pár řádků a předělal se celý web.</li>
+      <li><b>Hodně vzduchu.</b> Velké mezery mezi sekcemi (44–56 px) a omezená šířka textu (asi 60 znaků na řádek), aby se dobře četlo.</li>
+      <li><b>Měkké tvary.</b> Zaoblené rohy 18–28 px, tenké linky a dlouhý jemný stín do modra místo tvrdého šedého. Ladí to s 3D postavami, které jsou taky měkké.</li>
+      <li><b>Obsah je hrdina.</b> Žádné ikonky ani dekorace. Pracují jen postavy, video a fotka rodiny. Pozadí je skoro bílé, aby barvy maskota vynikly.</li>
+    </ol>
+
+    <h3>Kostra v kódu</h3>
+    <pre><code>:root{
+  --forest:#12355B;  /* tmavý text */
+  --green:#1F7EC2;   /* akcent (název zůstal, barva je modrá) */
+  --lime:#CFE9FB;    /* štítky */
+  --bg:#F4F8FB;      /* pozadí */
+  --line:#DCE7F0;    /* tenké linky */
+}
+body{font-family:'Bricolage Grotesque',system-ui,sans-serif;background:var(--bg);color:var(--forest)}
+h1{font-size:clamp(38px,7vw,76px);font-weight:800;letter-spacing:-.045em;line-height:1}
+h1 span{color:var(--green)}
+.tag{background:var(--lime);border-radius:999px;padding:6px 12px;
+     font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.card{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden}
+.foto{border-radius:28px;box-shadow:0 30px 60px -30px rgba(18,53,91,.45)}</code></pre>
+    <p><code>clamp()</code> zařídí, že nadpis je na mobilu menší a na monitoru velký, bez dalšího kódu. Ten dlouhý stín se zápornou hodnotou (<code>-30px</code>) dělá jemný „vznášející se“ efekt pod fotkou.</p>
+
+    <h3>Jak jsme to zadávali</h3>
+    <p>Ve skutečnosti jsme designu nezadávali skoro nic. Zadávalo se <b>co</b> chceme, ne <b>jak</b> to má vypadat. Asistent má vkus zabudovaný. Takhle zněly naše skutečné pokyny (zkrácené, s opravenými překlepy):</p>
+    <pre><code>„dokážeš mi udělat hosting na githubu a napojit tam doménu … a pak tam dám ukázku možných maskotů“
+„dáš video na web?“
+„odstraň vše od Kolo 1 … tam dej už rodinu spočítalů“
+„z loga odstraň tu zelenou bramboru … budeme používat pana spočítala s tím psem“
+„texty nejsou zelené, ale tou světle modrou“</code></pre>
+    <div class="note"><b>Tajemství je ve zpětné vazbě</b>Krátké, přímé pokyny („tohle pryč“, „tohle modře“) a asistent, který si po každé změně web vyfotí na počítači i mobilu a opraví, co nesedí. Design vznikal postupně, ne naráz.</div>
+
+    <h3>Prompt ke zkopírování: první verze webu</h3>
+    <p>Když chceš začít od nuly, dej asistentovi (Claude Code, Claude.ai) třeba tohle:</p>
+    <pre><code>Udělej mi jednostránkový web pro [název] – [co děláme, pro koho].
+Jeden soubor index.html, žádný framework.
+
+Design:
+- jedno písmo z Google Fonts s výraznými nadpisy (např. Bricolage Grotesque),
+  nadpisy extra tučné se staženými mezerami, jedno klíčové slovo v barvě značky
+- paleta max. 6 barev jako CSS proměnné v :root, světlé pozadí, tmavý text
+- hodně vzduchu, zaoblené rohy 20–28 px, jemné dlouhé stíny, žádné ikonky navíc
+- hlavní roli hrají naše obrázky: [maskot / fotky / video]
+- mobil první, na telefonu nic nepřetéká
+
+Po dokončení si stránku vyfoť v šířce 1280 a 390 px, zkontroluj a oprav chyby.</code></pre>
+
+    <h3>Prompt: sladit web s maskotem</h3>
+    <pre><code>Podívej se na našeho maskota (přikládám obrázek). Navrhni paletu webu
+podle barev jeho oblečení, světlou barvu použij na plochy, sytější odstín
+na text, aby byl čitelný. Přebarvi celý web a vyrob nové logo
+(kulatý výřez s maskotem + název), favicon a obrázek pro sdílení 1200×630.</code></pre>
+
+    <h3>Technika</h3>
     <ul class="list">
-      <li><b>Barvy jako proměnné</b> (<code>--forest</code>, <code>--green</code>…). Změníš je na jednom místě a změní se všude.</li>
-      <li><b>Velké tučné nadpisy</b>, hodně vzduchu, zaoblené rohy (20–28 px) a jemné stíny.</li>
-      <li><b>Mobil první:</b> karty se na telefonu řadí po dvou nebo pod sebe, nic nepřetéká.</li>
-      <li><b>Obrázky zmenšené pro web</b> (JPG, 640 px pro karty, 1600 px pro velké), takže stránka nabíhá rychle.</li>
-      <li><b>Kontrola očima:</b> asistent si po každé změně stránku vyfotí a opraví, co je křivé.</li>
+      <li><b>Jeden soubor</b> <code>index.html</code> a složky s obrázky a videem. Žádný WordPress ani databáze, takže je rychlý a nic se nerozbije.</li>
+      <li><b>Obrázky zmenšené pro web</b> (JPG, 640 px pro karty, 1600 px pro velké).</li>
+      <li><b>Mobil:</b> mřížka se na telefonu přeskládá po dvou nebo pod sebe.</li>
     </ul>
   </section>
 
