@@ -380,3 +380,58 @@
 @media (max-width:900px){.ps-split{grid-template-columns:1fr;gap:var(--space-6)}}
 .ps-surface{background:var(--color-surface);border:1px solid var(--color-line);border-radius:var(--radius-lg);padding:var(--space-6)}
 .ps-sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ==========================================================
+   v2.1 – kalkulačka podle výzkumu (20. 10. 2026)
+   ========================================================== */
+
+/* Pole s −/+ (doplněk k posuvníku, WCAG 2.5.7) */
+.ps-input-group__btn{flex:none;width:48px;border:0;background:var(--color-bg);color:var(--color-text);font:var(--weight-black) 22px/1 var(--font-sans);cursor:pointer;transition:background var(--dur-fast)}
+.ps-input-group__btn:hover{background:var(--color-accent-soft)}
+.ps-input-group__btn:focus-visible{outline:3px solid var(--color-focus);outline-offset:-3px}
+.ps-input-group .ps-input.is-num{text-align:right;font-weight:var(--weight-semibold);font-variant-numeric:tabular-nums}
+
+/* Posuvník spárovaný s polem */
+.ps-slider-field{display:grid;gap:6px}
+.ps-slider-field__head{display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);flex-wrap:wrap}
+.ps-slider-field__head label{font-weight:var(--weight-semibold)}
+.ps-slider-field .ps-input-group{width:min(100%,250px)}
+.ps-slider-field .ps-range{margin:6px 0 0}
+.ps-range::-webkit-slider-thumb{width:32px;height:32px}
+
+/* Výběr fixace se sazbou (dlaždice) */
+.ps-choice--rate label{text-align:center;padding:12px 10px}
+.ps-choice--rate b{display:block;font-size:var(--text-h4);font-weight:var(--weight-black);font-variant-numeric:tabular-nums;color:var(--color-text)}
+.ps-choice--rate small{font-size:var(--text-xs)}
+.ps-choice--rate{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:560px){.ps-choice--rate{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* LTV ukazatel s hranicemi ČNB */
+.ps-meter{position:relative;height:12px;border-radius:999px;background:var(--color-line);overflow:visible;margin:22px 0 6px}
+.ps-meter>span{display:block;height:100%;border-radius:inherit;background:var(--color-success);transition:width .3s var(--ease),background .3s}
+.ps-meter.is-warn>span{background:var(--color-warn)}
+.ps-meter.is-danger>span{background:var(--color-danger)}
+.ps-meter i{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--color-text);opacity:.55}
+.ps-meter i::after{content:attr(data-l);position:absolute;bottom:calc(100% + 2px);left:50%;transform:translateX(-50%);font:var(--weight-semibold) 11px var(--font-sans);font-style:normal;white-space:nowrap;color:var(--color-text-muted)}
+
+/* Souhrn hodnot přenesený do formuláře (WCAG 3.3.7) */
+.ps-summary{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 16px;border-radius:14px;background:var(--color-info-bg);font-size:var(--text-sm)}
+.ps-summary b{font-variant-numeric:tabular-nums}
+.ps-summary button{margin-left:auto;background:none;border:0;color:var(--color-accent);font:var(--weight-semibold) 14px var(--font-sans);cursor:pointer;text-decoration:underline;padding:4px}
+
+/* Řádek důvěry pod tlačítkem */
+.ps-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;font-size:var(--text-xs);color:var(--color-text-muted)}
+.ps-trust span::before{content:"✓ ";color:var(--color-success);font-weight:var(--weight-black)}
+.ps-result .ps-trust{color:var(--ps-blue-300);justify-content:flex-start}
+.ps-result .ps-trust span::before{color:#7FD6A6}
+
+/* Reprezentativní příklad (§ 91 zák. 257/2016 Sb.) */
+.ps-legal{font-size:var(--text-xs);line-height:1.55;color:var(--color-text-muted);border-top:1px solid var(--color-line);padding-top:var(--space-3)}
+.ps-result .ps-legal{color:var(--ps-blue-300);border-top-color:rgba(207,233,251,.2)}
+.ps-body [hidden]{display:none!important}
+.ps-slider-field .ps-input-group{width:min(100%,300px)}
+.ps-input-group .ps-input.is-num{padding-left:8px;padding-right:8px}
+.ps-field--error .ps-input-group{border-color:var(--color-danger)}
+.ps-result .ps-meter{background:rgba(207,233,251,.25)}
+.ps-result .ps-meter i{background:#fff}
+.ps-result .ps-meter i::after{color:var(--ps-blue-300)}

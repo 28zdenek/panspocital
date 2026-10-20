@@ -1,6 +1,6 @@
 # Pan Spočítal – design systém
 
-> Verze 2.0 · 20. 10. 2026 · živá ukázka se všemi komponentami a kódem: https://panspocital.cz/design-system/
+> Verze 2.1 · 20. 10. 2026 · živá ukázka se všemi komponentami a kódem: https://panspocital.cz/design-system/
 >
 > Tenhle soubor je pravidlo pro lidi i pro AI asistenty. Než uděláš cokoliv nového
 > (stránku, banner, příspěvek, video), přečti si ho a použij `css/tokens.css`
@@ -98,6 +98,10 @@ Ukázka a kód každé komponenty: https://panspocital.cz/design-system/
 | `.ps-check` (checkbox/radio, text v `<span>`), `.ps-choice` (volby jako karty), `.ps-switch`, `.ps-fieldset` | volby |
 | `.ps-range`, `.ps-range-row`, `.ps-range-scale` | posuvník kalkulačky (vyplnění přes `--val`) |
 | `.ps-result`, `__row` | tmavý panel s výsledkem kalkulačky |
+| `.ps-slider-field`, `.ps-input-group__btn` | posuvník spárovaný s polem a −/+ (povinné, WCAG 2.5.7) |
+| `.ps-choice--rate` | výběr fixace jako dlaždice se sazbou |
+| `.ps-meter` (+`is-warn/is-danger`) | LTV s hranicemi ČNB 80 / 90 % |
+| `.ps-summary`, `.ps-trust`, `.ps-legal` | souhrn přenesený do formuláře, řádek důvěry, reprezentativní příklad |
 | `.ps-tip`, `__btn`, `__bubble` (+`--bottom`) | tooltip |
 | `.ps-table-wrap`, `.ps-table` (+`--striped/--compact`), `.is-num`, `.is-best` | tabulky |
 | `.ps-card` (+`__media/__body/__title/__text`, `--hover`) | karta |
@@ -121,6 +125,13 @@ Pravidla:
 - Popisek vždy nad polem, chyba pod polem lidsky a s radou. Poptávkový formulář max. 3–4 pole.
 - Ikony: [Lucide](https://lucide.dev), obrysové, čára 2 px, `currentColor`.
 - Stav nikdy jen barvou (vždy i text nebo ikona).
+
+### Kalkulačka (v2, podle výzkumu 20. 10. 2026)
+- Sazbu nenechávat psát: výběr fixace + sazba z průměru trhu s datem a zdrojem, vlastní sazba volitelně.
+- Vstupy: cena nemovitosti + vlastní zdroje → úvěr a LTV (limit ČNB 80 %, do 36 let 90 %). Druhá záložka „Na kolik dosáhnu“.
+- Výsledek je zdarma; kontakt až za hodnotu navíc („Pošli mi srovnání bank“), hodnoty se předvyplní.
+- Každé číslo o nákladech = reprezentativní příklad s RPSN (§ 91 zák. 257/2016 Sb.) – text dodá eDO.
+- Telefon s vysvětlením, proč ho chceme. Marketingový souhlas zvlášť a nezaškrtnutý.
 
 ### Čísla a formáty
 - Částka `4 500 000 Kč`, zkráceně `4,5 mil. Kč`, splátka `18 450 Kč/měs.`, úrok `4,49 %`, datum `20. 10. 2026`, telefon `+420 777 123 456`, čas `9.00–17.00`.
