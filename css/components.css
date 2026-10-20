@@ -89,3 +89,294 @@
 /* ---- Sekce ---- */
 .ps-section{padding:var(--space-12) 0}
 .ps-section+.ps-section{border-top:1px solid var(--color-line)}
+
+/* ==========================================================
+   v2.0 – rozšíření
+   ========================================================== */
+
+/* ---- Typografie: zbytek škály ---- */
+.ps-display{font-size:var(--text-display);font-weight:var(--weight-black);letter-spacing:-.05em;line-height:.95;margin:0}
+.ps-display em,.ps-h3 em,.ps-h4 em{font-style:normal;color:var(--color-accent)}
+.ps-h4{font-size:var(--text-h4);font-weight:var(--weight-black);letter-spacing:-.015em;line-height:1.25;margin:var(--space-5) 0 var(--space-2)}
+.ps-h5{font-size:var(--text-h5);font-weight:var(--weight-semibold);line-height:1.3;margin:var(--space-4) 0 var(--space-1)}
+.ps-h6{font-size:var(--text-h6);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-label);text-transform:uppercase;line-height:1.3;margin:var(--space-4) 0 var(--space-1);color:var(--color-text-muted)}
+.ps-small{font-size:var(--text-sm)}
+.ps-caption{font-size:var(--text-xs);color:var(--color-text-muted)}
+.ps-num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.ps-link{color:var(--color-accent);font-weight:var(--weight-semibold);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
+.ps-link:hover{color:var(--color-accent-hover);text-decoration-thickness:2.5px}
+.ps-link--arrow{text-decoration:none}
+.ps-link--arrow::after{content:" →";transition:margin var(--dur) var(--ease)}
+.ps-link--arrow:hover::after{margin-left:4px}
+.ps-body :focus-visible{outline:3px solid var(--color-focus);outline-offset:3px}
+
+/* ---- Seznamy ---- */
+.ps-list{margin:0;padding:0;list-style:none;display:grid;gap:var(--space-2)}
+.ps-list li{position:relative;padding-left:32px}
+.ps-list--check li::before{content:"";position:absolute;left:0;top:.2em;width:22px;height:22px;border-radius:50%;background:var(--color-accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A72B3' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/13px no-repeat}
+.ps-list--num{counter-reset:n}
+.ps-list--num li{counter-increment:n}
+.ps-list--num li::before{content:counter(n);position:absolute;left:0;top:.1em;width:24px;height:24px;border-radius:8px;background:var(--color-inverse-bg);color:var(--color-inverse-text);font-size:13px;font-weight:var(--weight-black);display:grid;place-items:center}
+
+/* ---- Tlačítka: velikosti a varianty ---- */
+.ps-btn--sm{min-height:var(--control-sm);padding:8px 16px;font-size:15px}
+.ps-btn--lg{min-height:var(--control-lg);padding:14px 28px;font-size:19px}
+.ps-btn--block{display:flex;width:100%}
+.ps-btn--ghost,.ps-body a.ps-btn--ghost{background:transparent;color:var(--color-accent)}
+.ps-btn--ghost:hover{background:var(--color-accent-soft);color:var(--color-text)}
+.ps-btn--danger{background:var(--color-danger);color:var(--ps-white)}
+.ps-btn--danger:hover{background:var(--ps-red-900)}
+.ps-btn--white{background:var(--ps-white);color:var(--color-text)}
+.ps-btn--white:hover{background:var(--color-accent-soft)}
+.ps-btn--icon{width:var(--control-md);padding:0}
+.ps-btn--icon.ps-btn--sm{width:var(--control-sm)}
+.ps-btn svg{width:var(--icon-md);height:var(--icon-md);flex:none}
+.ps-btn[aria-busy="true"]{position:relative;color:transparent!important;pointer-events:none}
+.ps-btn[aria-busy="true"]::after{content:"";position:absolute;width:20px;height:20px;border-radius:50%;border:2.5px solid rgba(255,255,255,.45);border-top-color:#fff;animation:ps-spin .8s linear infinite}
+.ps-btn--secondary[aria-busy="true"]::after,.ps-btn--ghost[aria-busy="true"]::after{border-color:var(--color-accent-soft);border-top-color:var(--color-accent)}
+.ps-btn-group{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center}
+@keyframes ps-spin{to{transform:rotate(360deg)}}
+
+/* ---- Odznak (badge) ---- */
+.ps-badge{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:var(--radius-pill);font-size:13px;font-weight:var(--weight-semibold);line-height:1.4;background:var(--color-accent-soft);color:var(--color-text);white-space:nowrap}
+.ps-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.75}
+.ps-badge--plain::before{display:none}
+.ps-badge--success{background:var(--color-success-bg);color:var(--color-success-text)}
+.ps-badge--warn{background:var(--color-warn-bg);color:var(--color-warn-text)}
+.ps-badge--danger{background:var(--color-danger-bg);color:var(--color-danger-text)}
+.ps-badge--neutral{background:var(--color-line);color:var(--color-text-muted)}
+.ps-badge--solid{background:var(--color-accent);color:var(--ps-white)}
+
+/* ---- Upozornění (alert) ---- */
+.ps-alert{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:var(--space-3);align-items:start;padding:var(--space-4) var(--space-5);border-radius:var(--radius-md);background:var(--color-info-bg);color:var(--color-info-text);border-left:4px solid var(--color-info);font-size:16px;line-height:1.5}
+.ps-alert svg{width:22px;height:22px;margin-top:1px;color:var(--color-info)}
+.ps-alert__title{display:block;font-weight:var(--weight-black);margin-bottom:2px}
+.ps-alert__close{background:none;border:0;padding:4px;margin:-4px -6px 0 0;cursor:pointer;color:inherit;opacity:.6;font-size:20px;line-height:1;border-radius:8px}
+.ps-alert__close:hover{opacity:1}
+.ps-alert--success{background:var(--color-success-bg);color:var(--color-success-text);border-left-color:var(--color-success)}
+.ps-alert--success svg{color:var(--color-success)}
+.ps-alert--warn{background:var(--color-warn-bg);color:var(--color-warn-text);border-left-color:var(--color-warn)}
+.ps-alert--warn svg{color:#9A6B00}
+.ps-alert--danger{background:var(--color-danger-bg);color:var(--color-danger-text);border-left-color:var(--color-danger)}
+.ps-alert--danger svg{color:var(--color-danger)}
+
+/* ---- Formuláře ---- */
+.ps-form{display:grid;gap:var(--space-5)}
+.ps-label-opt{font-weight:var(--weight-regular);color:var(--color-text-muted)}
+.ps-input,.ps-select,.ps-textarea{width:100%}
+.ps-select,.ps-textarea{min-height:48px;padding:12px 16px;border:1.5px solid var(--color-line);border-radius:14px;background:var(--color-surface);color:var(--color-text);font:400 17px var(--font-sans);transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.ps-select{appearance:none;padding-right:44px;background:var(--color-surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2312355B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") right 14px center/18px no-repeat;cursor:pointer}
+.ps-textarea{min-height:120px;resize:vertical;line-height:1.5}
+.ps-select:focus,.ps-textarea:focus{outline:0;border-color:var(--color-accent);box-shadow:0 0 0 4px var(--color-accent-soft)}
+.ps-input:hover,.ps-select:hover,.ps-textarea:hover{border-color:#B9CCDD}
+.ps-input::placeholder,.ps-textarea::placeholder{color:#677C92}
+.ps-input[disabled],.ps-select[disabled],.ps-textarea[disabled]{background:var(--color-bg);color:var(--color-text-muted);cursor:not-allowed}
+.ps-field--error .ps-input,.ps-field--error .ps-select,.ps-field--error .ps-textarea,.ps-input[aria-invalid="true"]{border-color:var(--color-danger)}
+.ps-field--error .ps-input:focus,.ps-input[aria-invalid="true"]:focus{box-shadow:0 0 0 4px var(--color-danger-bg)}
+.ps-field--success .ps-input{border-color:var(--color-success)}
+.ps-error{font-size:var(--text-sm);color:var(--color-danger);font-weight:var(--weight-semibold)}
+.ps-success{font-size:var(--text-sm);color:var(--color-success);font-weight:var(--weight-semibold)}
+/* pole s jednotkou (Kč, %, let) */
+.ps-input-group{display:flex;align-items:stretch;border:1.5px solid var(--color-line);border-radius:14px;background:var(--color-surface);overflow:hidden;transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.ps-input-group:focus-within{border-color:var(--color-accent);box-shadow:0 0 0 4px var(--color-accent-soft)}
+.ps-input-group .ps-input{border:0;border-radius:0;box-shadow:none!important;min-width:0;flex:1}
+.ps-input-group__addon{display:flex;align-items:center;padding:0 16px;background:var(--color-bg);color:var(--color-text-muted);font-weight:var(--weight-semibold);white-space:nowrap}
+/* checkbox, radio */
+.ps-check{display:flex;gap:var(--space-3);align-items:flex-start;cursor:pointer;font-size:17px;line-height:1.45}
+.ps-check input{appearance:none;flex:none;width:24px;height:24px;margin:0;border:2px solid #9FB4C8;background:var(--color-surface);border-radius:7px;display:grid;place-items:center;cursor:pointer;transition:background var(--dur-fast),border-color var(--dur-fast)}
+.ps-check input[type=radio]{border-radius:50%}
+.ps-check input:checked{background:var(--color-accent);border-color:var(--color-accent)}
+.ps-check input[type=checkbox]:checked::after{content:"";width:12px;height:7px;border:solid #fff;border-width:0 0 3px 3px;transform:translateY(-2px) rotate(-45deg)}
+.ps-check input[type=radio]:checked::after{content:"";width:10px;height:10px;border-radius:50%;background:#fff}
+.ps-check input:focus-visible{outline:3px solid var(--color-focus);outline-offset:2px}
+.ps-check small{display:block;color:var(--color-text-muted);font-size:var(--text-sm)}
+/* výběr jako karty (např. „Na co je úvěr?“) */
+.ps-choice{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--space-3)}
+.ps-choice label{position:relative;display:block;padding:16px 18px;border:1.5px solid var(--color-line);border-radius:var(--radius-md);background:var(--color-surface);cursor:pointer;font-weight:var(--weight-semibold);transition:border-color var(--dur),box-shadow var(--dur)}
+.ps-choice label small{display:block;font-weight:400;color:var(--color-text-muted);font-size:var(--text-sm)}
+.ps-choice input{position:absolute;opacity:0;pointer-events:none}
+.ps-choice label:hover{border-color:#B9CCDD}
+.ps-choice label:has(input:checked){border-color:var(--color-accent);box-shadow:0 0 0 3px var(--color-accent-soft)}
+.ps-choice label:has(input:focus-visible){outline:3px solid var(--color-focus);outline-offset:2px}
+/* přepínač */
+.ps-switch{display:inline-flex;align-items:center;gap:var(--space-3);cursor:pointer;font-size:17px}
+.ps-switch input{appearance:none;width:48px;height:28px;margin:0;border-radius:999px;background:#B9CCDD;position:relative;cursor:pointer;transition:background var(--dur)}
+.ps-switch input::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(18,53,91,.3);transition:transform var(--dur) var(--ease)}
+.ps-switch input:checked{background:var(--color-accent)}
+.ps-switch input:checked::after{transform:translateX(20px)}
+.ps-switch input:focus-visible{outline:3px solid var(--color-focus);outline-offset:2px}
+/* posuvník (kalkulačky) */
+.ps-range{width:100%;appearance:none;height:8px;border-radius:999px;background:linear-gradient(to right,var(--color-accent) var(--val,50%),var(--color-line) var(--val,50%));margin:14px 0 6px;cursor:pointer}
+.ps-range::-webkit-slider-thumb{appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;border:3px solid var(--color-accent);box-shadow:var(--shadow-sm)}
+.ps-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--color-accent);box-shadow:var(--shadow-sm)}
+.ps-range:focus-visible{outline:3px solid var(--color-focus);outline-offset:6px}
+.ps-range-row{display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-3)}
+.ps-range-row output{font-size:var(--text-h4);font-weight:var(--weight-black);font-variant-numeric:tabular-nums}
+.ps-range-scale{display:flex;justify-content:space-between;font-size:var(--text-xs);color:var(--color-text-muted)}
+.ps-fieldset{border:0;margin:0;padding:0;display:grid;gap:var(--space-3)}
+.ps-fieldset legend{font-weight:var(--weight-semibold);font-size:var(--text-sm);margin-bottom:var(--space-2);padding:0}
+
+/* ---- Tooltip ---- */
+.ps-tip{position:relative;display:inline-flex}
+.ps-tip__btn{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;border:0;background:var(--color-accent-soft);color:var(--color-text);font:800 13px var(--font-sans);cursor:help;vertical-align:middle;padding:0}
+.ps-tip__btn:hover{background:var(--ps-blue-300)}
+.ps-tip__bubble{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translate(-50%,4px);width:max-content;max-width:260px;padding:10px 14px;border-radius:12px;background:var(--color-inverse-bg);color:#fff;font-size:14px;font-weight:400;line-height:1.45;text-align:left;box-shadow:var(--shadow-md);opacity:0;visibility:hidden;pointer-events:none;transition:opacity var(--dur-fast),transform var(--dur-fast),visibility var(--dur-fast);z-index:var(--z-tooltip)}
+.ps-tip__bubble::after{content:"";position:absolute;top:100%;left:50%;margin-left:-6px;border:6px solid transparent;border-top-color:var(--color-inverse-bg)}
+.ps-tip:hover .ps-tip__bubble,.ps-tip:focus-within .ps-tip__bubble{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.ps-tip--bottom .ps-tip__bubble{bottom:auto;top:calc(100% + 10px)}
+.ps-tip--bottom .ps-tip__bubble::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--color-inverse-bg)}
+
+/* ---- Tabulka ---- */
+.ps-table-wrap{overflow-x:auto;border:1px solid var(--color-line);border-radius:var(--radius-md);background:var(--color-surface);-webkit-overflow-scrolling:touch}
+.ps-table{width:100%;border-collapse:collapse;font-size:16px;line-height:1.45}
+.ps-table caption{caption-side:top;text-align:left;padding:14px 18px 0;font-weight:var(--weight-black);font-size:var(--text-h5)}
+.ps-table th,.ps-table td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--color-line);vertical-align:middle}
+.ps-table thead th{background:var(--color-bg);font-size:13px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--color-text-muted);white-space:nowrap}
+.ps-table tbody tr:last-child td,.ps-table tbody tr:last-child th{border-bottom:0}
+.ps-table tbody tr:hover{background:#F8FBFD}
+.ps-table .is-num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ps-table .is-best{background:var(--color-info-bg)}
+.ps-table .is-best:hover{background:#D9ECF9}
+.ps-table--striped tbody tr:nth-child(even){background:#F8FBFD}
+.ps-table--compact th,.ps-table--compact td{padding:8px 14px}
+.ps-table tfoot td{font-weight:var(--weight-black);background:var(--color-bg);border-top:2px solid var(--color-line)}
+
+/* ---- Záložky ---- */
+.ps-tabs__list{display:flex;gap:4px;padding:4px;background:var(--color-line);border-radius:var(--radius-pill);width:max-content;max-width:100%;overflow-x:auto}
+.ps-tabs__tab{border:0;background:transparent;padding:10px 18px;border-radius:var(--radius-pill);font:var(--weight-semibold) 15px var(--font-sans);color:var(--color-text-muted);cursor:pointer;white-space:nowrap;min-height:40px}
+.ps-tabs__tab:hover{color:var(--color-text)}
+.ps-tabs__tab[aria-selected="true"]{background:var(--color-surface);color:var(--color-text);box-shadow:var(--shadow-sm)}
+.ps-tabs__panel{padding-top:var(--space-5)}
+.ps-tabs__panel[hidden]{display:none}
+
+/* ---- Akordeon (FAQ) ---- */
+.ps-accordion{border:1px solid var(--color-line);border-radius:var(--radius-md);background:var(--color-surface);overflow:hidden}
+.ps-accordion details+details{border-top:1px solid var(--color-line)}
+.ps-accordion summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);padding:18px 22px;font-weight:var(--weight-semibold);font-size:17px;cursor:pointer}
+.ps-accordion summary::-webkit-details-marker{display:none}
+.ps-accordion summary::after{content:"";flex:none;width:28px;height:28px;border-radius:50%;background:var(--color-accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2312355B' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center/14px no-repeat;transition:transform var(--dur) var(--ease)}
+.ps-accordion details[open] summary::after{transform:rotate(45deg)}
+.ps-accordion summary:hover{background:#F8FBFD}
+.ps-accordion__body{padding:0 22px 20px;color:var(--color-text-muted);font-size:17px}
+
+/* ---- Drobečková navigace ---- */
+.ps-breadcrumb{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:var(--text-sm);color:var(--color-text-muted);margin:0;padding:0;list-style:none}
+.ps-breadcrumb li+li::before{content:"/";margin-right:6px;color:#9FB4C8}
+.ps-breadcrumb a{color:var(--color-text-muted);text-decoration:none}
+.ps-breadcrumb a:hover{color:var(--color-accent);text-decoration:underline}
+.ps-breadcrumb [aria-current]{color:var(--color-text);font-weight:var(--weight-semibold)}
+
+/* ---- Stránkování ---- */
+.ps-pagination{display:flex;gap:6px;flex-wrap:wrap;align-items:center;list-style:none;margin:0;padding:0}
+.ps-pagination a,.ps-pagination span{display:grid;place-items:center;min-width:44px;height:44px;padding:0 12px;border-radius:12px;font-weight:var(--weight-semibold);text-decoration:none;color:var(--color-text)}
+.ps-pagination a:hover{background:var(--color-accent-soft)}
+.ps-pagination [aria-current]{background:var(--color-inverse-bg);color:#fff}
+
+/* ---- Postup (stepper) ---- */
+.ps-stepper{display:flex;list-style:none;margin:0;padding:0;counter-reset:s}
+.ps-stepper li{flex:1;position:relative;counter-increment:s;text-align:center;font-size:var(--text-sm);color:var(--color-text-muted);padding-top:44px}
+.ps-stepper li::before{content:counter(s);position:absolute;top:0;left:50%;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--color-surface);border:2px solid var(--color-line);font-weight:var(--weight-black);color:var(--color-text-muted);z-index:1}
+.ps-stepper li+li::after{content:"";position:absolute;top:16px;right:50%;width:100%;height:2px;background:var(--color-line)}
+.ps-stepper .is-done::before{content:"✓";background:var(--color-accent);border-color:var(--color-accent);color:#fff}
+.ps-stepper .is-done+li::after,.ps-stepper .is-done+.is-done::after{background:var(--color-accent)}
+.ps-stepper .is-current::before{border-color:var(--color-accent);color:var(--color-accent);box-shadow:0 0 0 4px var(--color-accent-soft)}
+.ps-stepper .is-current{color:var(--color-text);font-weight:var(--weight-semibold)}
+
+/* ---- Průběh ---- */
+.ps-progress{height:10px;border-radius:999px;background:var(--color-line);overflow:hidden}
+.ps-progress>span{display:block;height:100%;border-radius:inherit;background:var(--color-accent);transition:width .4s var(--ease)}
+.ps-spinner{display:inline-block;width:28px;height:28px;border-radius:50%;border:3px solid var(--color-accent-soft);border-top-color:var(--color-accent);animation:ps-spin .8s linear infinite}
+.ps-skeleton{display:block;border-radius:10px;background:linear-gradient(90deg,var(--color-line) 25%,#EAF1F7 50%,var(--color-line) 75%);background-size:200% 100%;animation:ps-shimmer 1.4s infinite}
+@keyframes ps-shimmer{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.ps-spinner,.ps-skeleton,.ps-btn[aria-busy="true"]::after{animation-duration:3s}}
+
+/* ---- Avatar ---- */
+.ps-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 3px var(--ps-white)}
+.ps-avatar--sm{width:32px;height:32px}
+.ps-avatar--lg{width:72px;height:72px}
+.ps-avatar-group{display:flex}
+.ps-avatar-group .ps-avatar+.ps-avatar{margin-left:-12px}
+
+/* ---- Statistika / velké číslo ---- */
+.ps-stat{display:flex;flex-direction:column;gap:2px}
+.ps-stat__value{font-size:var(--text-num);font-weight:var(--weight-black);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.ps-stat__value small{font-size:.5em;font-weight:var(--weight-semibold);letter-spacing:0;margin-left:4px;color:var(--color-text-muted)}
+.ps-stat__label{font-size:var(--text-sm);color:var(--color-text-muted)}
+
+/* ---- Výsledek kalkulačky ---- */
+.ps-result{background:var(--color-inverse-bg);color:var(--color-inverse-text);border-radius:var(--radius-lg);padding:var(--space-6);display:grid;gap:var(--space-4)}
+.ps-result .ps-stat__value{color:#fff}
+.ps-result .ps-stat__value small,.ps-result .ps-stat__label{color:var(--ps-blue-300)}
+.ps-result hr{border:0;border-top:1px solid rgba(207,233,251,.2);margin:0}
+.ps-result__row{display:flex;justify-content:space-between;gap:var(--space-4);font-size:var(--text-sm)}
+.ps-result__row b{color:#fff;font-variant-numeric:tabular-nums}
+
+/* ---- Citace / reference ---- */
+.ps-quote{margin:0;background:var(--color-surface);border:1px solid var(--color-line);border-radius:var(--radius-lg);padding:var(--space-6);display:grid;gap:var(--space-4)}
+.ps-quote blockquote{margin:0;font-size:var(--text-h5);line-height:1.5}
+.ps-quote blockquote::before{content:"„";display:block;font-size:56px;line-height:.6;font-weight:var(--weight-black);color:var(--ps-blue-300)}
+.ps-quote figcaption{display:flex;align-items:center;gap:var(--space-3);font-size:var(--text-sm);color:var(--color-text-muted)}
+.ps-quote figcaption b{display:block;color:var(--color-text);font-size:16px}
+.ps-stars{color:var(--ps-gold-400);letter-spacing:2px;font-size:18px}
+
+/* ---- Oddělovač ---- */
+.ps-divider{border:0;border-top:1px solid var(--color-line);margin:var(--space-8) 0}
+.ps-divider--text{display:flex;align-items:center;gap:var(--space-3);border:0;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:var(--tracking-label);color:var(--color-text-muted);margin:var(--space-6) 0}
+.ps-divider--text::before,.ps-divider--text::after{content:"";flex:1;border-top:1px solid var(--color-line)}
+
+/* ---- Prázdný stav ---- */
+.ps-empty{text-align:center;padding:var(--space-10) var(--space-6);border:1.5px dashed #C7D7E5;border-radius:var(--radius-lg);display:grid;justify-items:center;gap:var(--space-3)}
+.ps-empty img{width:120px;height:120px;border-radius:50%;object-fit:cover}
+.ps-empty p{margin:0;color:var(--color-text-muted);max-width:40ch}
+
+/* ---- Modální okno (<dialog>) ---- */
+.ps-modal{border:0;padding:0;border-radius:var(--radius-lg);max-width:min(520px,calc(100vw - 32px));width:100%;box-shadow:var(--shadow-lg);color:var(--color-text);background:var(--color-surface)}
+.ps-modal::backdrop{background:rgba(11,36,64,.55);backdrop-filter:blur(3px)}
+.ps-modal__head{display:flex;justify-content:space-between;align-items:start;gap:var(--space-4);padding:var(--space-6) var(--space-6) 0}
+.ps-modal__head h2{margin:0;font-size:var(--text-h3);letter-spacing:-.02em}
+.ps-modal__body{padding:var(--space-3) var(--space-6) var(--space-6);color:var(--color-text-muted)}
+.ps-modal__foot{display:flex;justify-content:flex-end;gap:var(--space-3);padding:var(--space-4) var(--space-6);background:var(--color-bg);border-top:1px solid var(--color-line)}
+.ps-close{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:0;background:var(--color-bg);color:var(--color-text);font-size:22px;line-height:1;cursor:pointer;flex:none}
+.ps-close:hover{background:var(--color-accent-soft)}
+
+/* ---- Toast (krátká zpráva) ---- */
+.ps-toast-area{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:grid;gap:var(--space-2);z-index:var(--z-toast);width:max-content;max-width:calc(100vw - 32px)}
+.ps-toast{display:flex;align-items:center;gap:var(--space-3);padding:14px 18px;border-radius:14px;background:var(--color-inverse-bg);color:#fff;box-shadow:var(--shadow-lg);font-size:16px;animation:ps-toast-in .25s var(--ease)}
+.ps-toast svg{width:20px;height:20px;color:#7FD6A6;flex:none}
+@keyframes ps-toast-in{from{opacity:0;transform:translateY(10px)}}
+
+/* ---- Navigace webu ---- */
+.ps-nav{display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);padding:var(--space-4) 0}
+.ps-nav__links{display:flex;gap:var(--space-1);list-style:none;margin:0;padding:0}
+.ps-nav__links a{display:block;padding:10px 14px;border-radius:12px;font-weight:var(--weight-semibold);color:var(--color-text);text-decoration:none}
+.ps-nav__links a:hover{background:var(--color-accent-soft)}
+.ps-nav__links a[aria-current]{color:var(--color-accent)}
+.ps-nav__toggle{display:none}
+@media (max-width:900px){.ps-nav__links{display:none}.ps-nav__toggle{display:grid}}
+
+/* ---- Velká výzva (CTA pás) ---- */
+.ps-cta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-6);align-items:center;background:var(--color-inverse-bg);color:var(--color-inverse-text);border-radius:var(--radius-xl);padding:var(--space-10) var(--space-10);overflow:hidden;position:relative}
+.ps-cta h2{color:#fff;margin:0 0 var(--space-2)}
+.ps-cta p{margin:0;color:var(--ps-blue-300)}
+.ps-cta img{width:200px;height:200px;object-fit:cover;border-radius:50%;box-shadow:0 0 0 6px rgba(207,233,251,.15)}
+@media (max-width:700px){.ps-cta{grid-template-columns:1fr;padding:var(--space-8) var(--space-6)}.ps-cta img{width:140px;height:140px}}
+
+/* ---- Patička ---- */
+.ps-footer{background:var(--color-inverse-bg);color:var(--color-inverse-text);padding:var(--space-12) 0 var(--space-8);font-size:var(--text-sm)}
+.ps-footer a{color:var(--color-inverse-text);text-decoration:none}
+.ps-footer a:hover{color:#fff;text-decoration:underline}
+.ps-footer__cols{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:var(--space-8)}
+.ps-footer__cols h4{color:#fff;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:var(--tracking-label);margin:0 0 var(--space-3)}
+.ps-footer__cols ul{list-style:none;margin:0;padding:0;display:grid;gap:var(--space-2)}
+.ps-footer__legal{border-top:1px solid rgba(207,233,251,.15);margin-top:var(--space-8);padding-top:var(--space-5);color:var(--ps-blue-300);font-size:var(--text-xs);line-height:1.6}
+@media (max-width:700px){.ps-footer__cols{grid-template-columns:1fr 1fr}}
+
+/* ---- Rozvržení ---- */
+.ps-stack{display:flex;flex-direction:column;gap:var(--space-4)}
+.ps-stack--sm{gap:var(--space-2)}
+.ps-stack--lg{gap:var(--space-8)}
+.ps-cluster{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center}
+.ps-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-10);align-items:center}
+@media (max-width:900px){.ps-split{grid-template-columns:1fr;gap:var(--space-6)}}
+.ps-surface{background:var(--color-surface);border:1px solid var(--color-line);border-radius:var(--radius-lg);padding:var(--space-6)}
+.ps-sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

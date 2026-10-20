@@ -37,6 +37,23 @@
   --color-line:var(--ps-gray-200);
   --color-inverse-bg:var(--ps-navy-800);
   --color-inverse-text:#E3F1FB;
+  --color-focus:var(--ps-blue-400);
+
+  /* ---- Stavové barvy (jen pro stav, nikdy jako dekorace) ---- */
+  --ps-green-700:#1E7B4C;
+  --ps-green-50:#E5F4EA;
+  --ps-green-900:#14462A;
+  --ps-red-700:#B42318;
+  --ps-red-50:#FBE6E4;
+  --ps-red-900:#6B1D16;
+  --color-success:var(--ps-green-700);
+  --color-success-bg:var(--ps-green-50);
+  --color-success-text:var(--ps-green-900);
+  --color-danger:var(--ps-red-700);
+  --color-danger-bg:var(--ps-red-50);
+  --color-danger-text:var(--ps-red-900);
+  --color-warn:var(--ps-gold-400);
+  --color-info:var(--ps-blue-600);
 
   /* ---- Typografie ---- */
   --font-sans:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif;
@@ -48,9 +65,14 @@
   --text-sm:15px;
   --text-md:18px;
   --text-lg:clamp(18px,2.2vw,22px);
+  --text-h6:16px;
+  --text-h5:18px;
+  --text-h4:20px;
   --text-h3:22px;
   --text-h2:clamp(26px,3.6vw,38px);
   --text-h1:clamp(38px,7vw,76px);
+  --text-display:clamp(44px,9vw,104px);
+  --text-num:clamp(32px,5vw,48px);  /* velká čísla: splátka, úrok */
   --tracking-display:-.045em;
   --tracking-heading:-.03em;
   --tracking-label:.06em;
@@ -72,6 +94,26 @@
   --container-text:980px;
   --gutter:20px;
   --gutter-mobile:16px;
+
+  --section:clamp(48px,8vw,96px);   /* svislá mezera mezi sekcemi */
+
+  /* ---- Ovládací prvky ---- */
+  --control-sm:40px;
+  --control-md:48px;
+  --control-lg:56px;
+  --icon-sm:16px;
+  --icon-md:20px;
+  --icon-lg:24px;
+
+  /* ---- Vrstvy ---- */
+  --z-sticky:100;
+  --z-dropdown:200;
+  --z-tooltip:300;
+  --z-modal:400;
+  --z-toast:500;
+
+  /* ---- Breakpointy (jen pro dokumentaci, v @media piš čísla) ----
+     mobil < 560 px · tablet 560–900 px · desktop > 900 px · široký > 1180 px */
 
   /* ---- Tvary ---- */
   --radius-sm:8px;

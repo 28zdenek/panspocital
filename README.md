@@ -6,7 +6,7 @@ Pracovní verze (`noindex`), hostovaná zdarma na GitHub Pages.
 | Stránka | Adresa |
 |---|---|
 | Hlavní web | https://panspocital.cz |
-| Design systém | https://panspocital.cz/design-system/ |
+| Design systém + brand manuál (v2.0) | https://panspocital.cz/design-system/ |
 | Návod, jak projekt vznikl | https://panspocital.cz/navod/ |
 
 ## Design systém
@@ -24,7 +24,7 @@ Nová stránka:
 <body class="ps-body">…</body>
 ```
 
-S AI asistentem (Claude Code): *„Přečti si DESIGN.md a použij css/tokens.css a css/components.css.“*
+S AI asistentem (Claude Code): *„Přečti si DESIGN.md a design-system/index.html a použij css/tokens.css a css/components.css. Nevymýšlej nové barvy ani komponenty.“*
 
 ## Struktura
 
@@ -35,6 +35,7 @@ design-system/        živá dokumentace design systému
 css/                  tokens.css, components.css
 img/logo.jpg          logo (kulatý výřez)
 img/rodina/           rodina Spočítalových (reference postav)
+img/avatar/           výřezy obličejů postav pro avatary (160 px)
 img/3d/               návrhy maskota 1–40
 video/                úvodní video + náhled
 og.jpg                obrázek pro sdílení 1200×630
